@@ -30,5 +30,5 @@
 
  ![alt text](image-3.png)
 
-
+Diagramme de classe : 
 
