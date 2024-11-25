@@ -21,3 +21,7 @@
 
 <strong>Cas d'utilisation
  : </strong>
+
+ User case : 
+
+ ![alt text](image.png)
