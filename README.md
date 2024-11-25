@@ -25,3 +25,7 @@
  User case : 
 
  ![alt text](image.png)
+
+ Diagramme d'activitee : 
+
+ 
