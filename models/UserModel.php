@@ -33,14 +33,14 @@ class UserModel
                 if (password_verify($password, $user['password'])) {
                     return $user;
                 } else {
-                    return "Email ou Mot de passe incorrect.";
+                    return "The password or the mail is incorrect.";
                 }
             } else {
-                return "Email ou Mot de passe incorrect.";
+                return "The password or the mail is incorrect.";
             }
         } catch (PDOException $e) {
-            error_log("Erreur lors de la vérification de l'utilisateur : " . $e->getMessage());
-            return "Une erreur interne est survenue. Veuillez réessayer plus tard.";
+            error_log("Error during the user's authentification : " . $e->getMessage());
+            return "Internal error, please try again later.";
         }
     }
 
