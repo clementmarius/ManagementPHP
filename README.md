@@ -36,4 +36,4 @@ Diagramme de classe :
 
 Diagramme de sequence semantique :
 
-
+![alt text](image-5.png)
