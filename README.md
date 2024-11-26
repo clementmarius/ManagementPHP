@@ -10,7 +10,18 @@
 Le developpement cuovre la creation d'une application web suivant l'architecture MVC, avec des fonctionnalites de gestion d'utilisateurs, de publications d'articles de blogs, de commentaires.
 
 <strong>3. Descriptif fonctionnel</strong>
+</br>
+<strong>a. Mur Commun</strong> 
+<br>
+* **Fonctionnalite** : Un flux d'articles de blofs accessible a tous, affiche de maniere chronologique.
+* **Details** : Affichage des articles avec nom et prenom, contenut et date.
+<br>
+Ordre : dernieres publications en premier.
 
+<strong>a. Gestion des Utilisateurs</strong> 
+<br>
+* **Inscription et Connexion** : Champs requis (Last Name, First Name, Date of Birth, Email, Profil picture)
+<br>
 
 <strong>4. Contraintes Techniques</strong>
 
