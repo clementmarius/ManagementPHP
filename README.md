@@ -3,9 +3,11 @@
 ## Cahier des Charges : Développement d'une Application web PHP natif
 
 <strong>1. Contexte et Objectifs</strong>
-<p>Le projet vise a entrainer les competences de la POO en php natif et en architecture MVC</p>
+<p>Le projet vise a entrainer les competences de la POO en php natif et en architecture MVC, en creant un systeme d'articles de blogs avec des utilisateurs</p>
 
 <strong>2. Périmètre du Projet</strong>
+</br>
+Le developpement cuovre la creation d'une application web suivant l'architecture MVC, avec des fonctionnalites de gestion d'utilisateurs, de publications d'articles de blogs, de commentaires.
 
 <strong>3. Descriptif fonctionnel</strong>
 
