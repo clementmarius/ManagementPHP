@@ -32,4 +32,6 @@
 
 Diagramme de classe : 
 
+![alt text](image-4.png)
+
 Diagramme de sequence  : 
