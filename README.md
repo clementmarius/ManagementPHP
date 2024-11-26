@@ -1,53 +1,59 @@
 # POO-Management-PHP
 
-## Cahier des Charges : Développement d'une Application web PHP natif
+## Project Specifications: Development of a Native PHP Web Application
 
-<strong>1. Contexte et Objectifs</strong>
-<p>Le projet vise a entrainer les competences de la POO en php natif et en architecture MVC, en creant un systeme d'articles de blogs avec des utilisateurs</p>
+**1. Context and Objectives**  
+The project aims to develop Object-Oriented Programming (OOP) skills in native PHP within an MVC architecture, creating a blog article system with user management features.
 
-<strong>2. Périmètre du Projet</strong>
-</br>
-Le developpement cuovre la creation d'une application web suivant l'architecture MVC, avec des fonctionnalites de gestion d'utilisateurs, de publications d'articles de blogs, de commentaires.
+**2. Project Scope**  
+Development covers creating a web application following the MVC architecture, with functionalities for user management, blog article publishing, and commenting.
 
-<strong>3. Descriptif fonctionnel</strong>
-</br>
-<strong>a. Mur Commun</strong> 
-<br>
-* **Fonctionnalite** : Un flux d'articles de blofs accessible a tous, affiche de maniere chronologique.
-* **Details** : Affichage des articles avec nom et prenom, contenut et date.
-<br>
-Ordre : dernieres publications en premier.
+**3. Functional Description**  
 
-<strong>a. Gestion des Utilisateurs</strong> 
-<br>
-* **Inscription et Connexion** : Champs requis (Last Name, First Name, Date of Birth, Email, Profil picture)
-<br>
+**a. Shared Wall**  
+* **Feature**: A blog article feed accessible to all, displayed in chronological order.  
+* **Details**: Display of articles with first and last name, content, and date.  
+Order: latest publications first.
 
-<strong>4. Contraintes Techniques</strong>
+**b. User Management**  
+* **Registration and Login**: Required fields (Last Name, First Name, Date of Birth, Email, Profile picture).  
+   Verification of email uniqueness.  
+   Secure validation and login methods (secure password hashing).  
+* **Secure Logout**  
+* **Account Deletion**:  
+   Deactivation in the database with data retention for 1 year (CNIL compliance).  
+   Automatic deletion trigger after one year.
 
-### Explications détaillées de l'architecture
+**c. Publication Management**  
+* **Creating and Deleting Publications**:  
+   Users can post and delete their own publications.  
+* **Comments**:  
+   Ability to comment on publications.
 
-<strong>5. User Stories et Critères de Validation</strong>
+**4. Technical Constraints**
 
-<strong>Organigramme : </strong>
+### Detailed Architecture Explanations
 
-<strong>Schéma de la base de données (MPD) :</strong>
+**5. User Stories and Validation Criteria**
 
-<strong>Cas d'utilisation
- : </strong>
+**Organizational Chart:**  
 
- User case : 
+**Database Schema (MPD):**  
+
+**Use Cases:**  
+
+User case:  
 
 ![alt text](image-2.png)
 
- Diagramme d'activitee : 
+Activity Diagram:  
 
- ![alt text](image-3.png)
+![alt text](image-3.png)
 
-Diagramme de classe : 
+Class Diagram:  
 
 ![alt text](image-4.png)
 
-Diagramme de sequence semantique :
+Semantic Sequence Diagram:
 
 ![alt text](image-5.png)
