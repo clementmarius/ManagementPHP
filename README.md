@@ -32,6 +32,56 @@ Order: latest publications first.
 
 **4. Technical Constraints**
 
+* **Back-end**: PHP for handling requests and server processing.
+
+* **Database**: MySQL for storing users, blog articles, and comments.
+
+* **MVC Architecture**:  
+  * **Models**: Folder managing interactions with the database.
+  * **Views**: Folder for presentation (HTML, CSS, Vanilla JavaScript).
+  * **Controllers**: Folder coordinating between the user, model, and view layers.
+  * **Entry Point**: index.php.
+
+```
+├── index.php
+│
+├── /controllers
+│   ├── AuthController.php
+│   ├── UserController.php
+│   ├── PostController.php
+│   ├── CommentController.php
+│ 
+│
+├── /models
+│   ├── UserModel.php
+│   ├── PostModel.php
+│   ├── CommentModel.php
+│   
+│
+├── /views
+│   ├── login.php
+│   ├── register.php
+│   ├── create_post.php
+│   ├── view_posts.php
+│   ├── comment.php
+│   ├── header.php
+│   └── footer.php
+│
+├── /public
+│   └── /assets
+│       ├── /css
+│       │   └── style.css
+│       ├── /js
+│       │   └── script.js
+│       └── /img
+│           └── (images des users)
+│
+├── .env
+│
+└── .htaccess
+```
+
+
 ### Detailed Architecture Explanations
 
 **5. User Stories and Validation Criteria**
