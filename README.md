@@ -32,3 +32,4 @@
 
 Diagramme de classe : 
 
+Diagramme de sequence  : 
