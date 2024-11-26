@@ -11,11 +11,12 @@ Le developpement cuovre la creation d'une application web suivant l'architecture
 
 <strong>3. Descriptif fonctionnel</strong>
 
-<strong>3. Contraintes Techniques</strong>
+
+<strong>4. Contraintes Techniques</strong>
 
 ### Explications détaillées de l'architecture
 
-<strong>4. User Stories et Critères de Validation</strong>
+<strong>5. User Stories et Critères de Validation</strong>
 
 <strong>Organigramme : </strong>
 
