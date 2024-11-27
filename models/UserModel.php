@@ -44,7 +44,7 @@ class UserModel
         }
     }
 
-    public function registerUser() 
+    public function registerUser($first_name,$last_name,$email,$date_of_birth, $password) 
     {
         
     }
