@@ -29,7 +29,6 @@ unset($_SESSION['register_error'], $_SESSION['success_message']);
 </head>
 
 <body>
-    <h2>Register</h2>
 
     <?php if ($error) : ?>
         <div class="error"><?php echo htmlspecialchars($error); ?></div>
@@ -39,7 +38,8 @@ unset($_SESSION['register_error'], $_SESSION['success_message']);
         <div class="error"><?php echo htmlspecialchars($success); ?></div>
     <?php endif; ?>
 
-<form action="" method="post" enctype="multipart/form-data">
+    <form action="" method="post" enctype="multipart/form-data">
+        <h2>Register</h2>
 
         <label for="name">First Name&nbsp;:</label>
         <input type="text" id="name" name="first_name" placeholder="First Name" value="<?php echo htmlspecialchars($_POST['first_name'] ?? ''); ?>" required>
@@ -58,7 +58,7 @@ unset($_SESSION['register_error'], $_SESSION['success_message']);
 
         <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?? ''; ?>">
         <input type="submit" value="Register">
-</form>
+    </form>
 
 </body>
 
