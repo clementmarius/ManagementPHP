@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+    error_log("Session démarrée.");
 }
 
 $error = $_SESSION['register_error'] ?? '';
@@ -48,7 +49,7 @@ unset($_SESSION['register_error'], $_SESSION['success_message']);
         <input type="text" id="lastName" name="last_name" placeholder="Last Name" value="<?php echo htmlspecialchars($_POST['last_name'] ?? ''); ?>" required>
 
         <label for="start">Birthday&nbsp;:</label>
-        <input type="date" id="start" name="trip-start" value="<?php echo htmlspecialchars($_POST['trip-start'] ?? ''); ?>" required>
+        <input type="date" id="start" name="date_of_birth" value="<?php echo htmlspecialchars($_POST['date_of_birth'] ?? ''); ?>" required>
 
         <label for="email">Email&nbsp;:</label>
         <input type="email" id="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>" required>
