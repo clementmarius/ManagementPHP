@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Doranconet\models;
 
 use PDO;
@@ -44,11 +45,29 @@ class UserModel
         }
     }
 
-    public function registerUser($first_name,$last_name,$email,$date_of_birth, $password) 
+    public function registerUser($first_name, $last_name, $email, $date_of_birth, $password)
     {
-        
+        try {
+            // Hash du mot de passe
+            $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+            // Insertion dans la base de données
+            $stmt = $this->pdo->prepare("
+                INSERT INTO users (first_name, last_name, date_of_birth, email, password, is_active)
+                VALUES (:first_name, :last_name, :date_of_birth, :email, :password, 1)
+            ");
+
+            $stmt->bindParam(':first_name', $firstName, PDO::PARAM_STR);
+            $stmt->bindParam(':last_name', $lastName, PDO::PARAM_STR);
+            $stmt->bindParam(':date_of_birth', $dateOfBirth, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
+
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            error_log("Erreur SQL : " . $e->getMessage());
+            return "Erreur SQL : " . $e->getMessage(); // Retourner l'erreur pour débogage
+        }
     }
-
-
 }
-?>
