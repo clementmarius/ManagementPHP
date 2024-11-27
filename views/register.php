@@ -50,12 +50,13 @@ unset($_SESSION['register_error'], $_SESSION['success_message']);
         <label for="start">Birthday&nbsp;:</label>
         <input type="date" id="start" name="trip-start" value="<?php echo htmlspecialchars($_POST['trip-start'] ?? ''); ?>" required>
 
-        <label for="name">First Name&nbsp;:</label>
-        <input type="text" id="name" name="first_name" placeholder="First Name" value="<?php echo htmlspecialchars($_POST['first_name'] ?? ''); ?>" required>
+        <label for="email">Email&nbsp;:</label>
+        <input type="email" id="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>" required>
 
-        <label for="name">First Name&nbsp;:</label>
-        <input type="text" id="name" name="first_name" placeholder="First Name" value="<?php echo htmlspecialchars($_POST['first_name'] ?? ''); ?>" required>
+        <label for="password">password&nbsp;:</label>
+        <input type="password" id="password" name="password" placeholder="Password" required><br>
 
+        
 </form>
 
 </body>
