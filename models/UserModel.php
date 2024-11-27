@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Doranconet\models;
+namespace App\Management\models;
 
 use PDO;
 use PDOException;

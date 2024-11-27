@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Doranconet\Controllers;
+namespace App\Management\Controllers;
 
-use App\Doranconet\models\UserModel;
+use App\Management\models\UserModel;
+
 use Exception;
 
 require_once __DIR__ . '/../models/UserModel.php';
