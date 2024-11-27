@@ -44,6 +44,10 @@ class UserModel
         }
     }
 
+    public function registerUser() 
+    {
+        
+    }
 
 
 }
