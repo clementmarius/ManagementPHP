@@ -56,7 +56,8 @@ unset($_SESSION['register_error'], $_SESSION['success_message']);
         <label for="password">password&nbsp;:</label>
         <input type="password" id="password" name="password" placeholder="Password" required><br>
 
-        
+        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?? ''; ?>">
+        <input type="submit" value="Register">
 </form>
 
 </body>
