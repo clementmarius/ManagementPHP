@@ -20,13 +20,25 @@ unset($_SESSION['register_error'], $_SESSION['success_message']);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../public/assets/css/register.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 </head>
+
 <body>
-    <p>Bonjour</p>
+    <h2>Register</h2>
+
+    <?php if ($error) : ?>
+        <div class="error"><?php echo htmlspecialchars($error); ?></div>
+    <?php endif; ?>
+
+    <?php if ($success) : ?>
+        <div class="error"><?php echo htmlspecialchars($success); ?></div>
+    <?php endif; ?>
+
 </body>
+
 </html>
