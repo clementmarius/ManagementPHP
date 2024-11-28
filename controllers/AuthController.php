@@ -48,12 +48,16 @@ class AuthController
 
             if (is_array($result)) {
                 $_SESSION['user'] = $result;
-                header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/view_posts.php");
+                /*                 header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/view_posts.php");
+ */
+                echo ("ok");
                 exit;
             } else {
                 $_SESSION['login_err'] = $result;
                 $_SESSION['email'] = $email;
-                header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+                /*                 header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+ */
+                echo ("failed");
                 exit;
             }
         }
