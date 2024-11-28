@@ -78,6 +78,7 @@ class UserController
                 $email = htmlspecialchars(trim($_GET['email'] ?? ''));
 
                 $userModel = new UserModel();
+    
                 $result = $userModel->showUser($first_name, $last_name, $email, $date_of_birth);
 
 
