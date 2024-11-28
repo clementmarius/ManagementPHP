@@ -16,7 +16,9 @@ class UserModel
     {
         try {
             $this->pdo = getDatabaseConnection();
+            error_log("Connexion à la base de données établie avec succès.");
         } catch (PDOException $e) {
+            error_log("Erreur de connexion à la base de données : " . $e->getMessage());
             die("Erreur de connexion à la base de données : " . htmlspecialchars($e->getMessage()));
         }
     }
@@ -57,9 +59,9 @@ class UserModel
                 VALUES (:first_name, :last_name, :date_of_birth, :email, :password, 1)
             ");
 
-            $stmt->bindParam(':first_name', $firstName, PDO::PARAM_STR);
-            $stmt->bindParam(':last_name', $lastName, PDO::PARAM_STR);
-            $stmt->bindParam(':date_of_birth', $dateOfBirth, PDO::PARAM_STR);
+            $stmt->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+            $stmt->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+            $stmt->bindParam(':date_of_birth', $date_of_birth, PDO::PARAM_STR);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->bindParam(':password', $hashedPassword, PDO::PARAM_STR);
 
