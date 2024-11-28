@@ -9,12 +9,19 @@
 </head>
 
 <body>
-    <h2>Login Page</h2>
+
 
     <form action="" method="">
+
+        <h2>Login Page</h2>
         <label for="email">Email&nbsp;</label>
         <input type="email" id="email" name="email" placeholder="Email" value="" required>
 
+        <label for="password">password&nbsp;:</label>
+        <input type="password" id="password" name="password" placeholder="Password" required><br>
+
+        <input type="hidden" name="csrf_token" value="">
+        <input type="submit" value="Log In">
     </form>
 </body>
 
