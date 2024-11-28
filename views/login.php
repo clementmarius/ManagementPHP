@@ -31,6 +31,14 @@ unset($_SESSION['login_error'], $_SESSION['success_message']);
 
 <body>
 
+    <?php if ($error) : ?>
+        <div class="error"><?php echo htmlspecialchars($error); ?></div>
+    <?php endif; ?>
+
+    <?php if ($success) : ?>
+        <div class="error"><?php echo htmlspecialchars($success); ?></div>
+    <?php endif; ?>
+
 
     <form action="" method="POST">
 
