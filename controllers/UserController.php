@@ -65,4 +65,29 @@ class UserController
             exit;
         }
     }
+
+    public function showUserProfile()
+    {
+        try {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                $first_name = htmlspecialchars(trim($_GET['first_name'] ?? ''));
+                $last_name = htmlspecialchars(trim($_GET['last_name'] ?? ''));
+                $date_of_birth = htmlspecialchars(trim($_GET['date_of_birth'] ?? ''));
+                $email = htmlspecialchars(trim($_GET['email'] ?? ''));
+
+                error_log("Donnees soumises : " . json_encode([
+                    'firstName' => $first_name,
+                    'lastName' => $last_name,
+                    'dateOfBirth' => $date_of_birth,
+                    'email' => $email
+                ]));
+            }
+        } catch (Exception $e) {
+            $_SESSION['display_error'] = $e->getMessage();
+            header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/user_profile");
+        }
+    }
 }
