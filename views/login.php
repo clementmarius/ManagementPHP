@@ -1,3 +1,24 @@
+<?php
+
+require_once __DIR__ . '/../controllers/AuthController.php';
+
+use App\Management\Controllers\AuthController;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $controller = new AuthController();
+    $controller->login();
+}
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+    error_log("Session démarrée.");
+}
+
+$error = $_SESSION['login_error'] ?? '';
+$success = $_SESSION['success_message'] ?? '';
+unset($_SESSION['login_error'], $_SESSION['success_message']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +32,7 @@
 <body>
 
 
-    <form action="" method="">
+    <form action="" method="POST">
 
         <h2>Login Page</h2>
         <label for="email">Email&nbsp;</label>
