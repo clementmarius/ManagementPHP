@@ -46,7 +46,7 @@ class UserController
                 }
 
                 $userModel = new UserModel();
-                $result = $userModel->registerUser($first_name, $last_name, $date_of_birth, $email, $password);
+                $result = $userModel->registerUser($first_name, $last_name, $email, $date_of_birth, $password);
 
                 if ($result === true) {
                     $_SESSION['success_message'] = "Enregistrement réussi !";
