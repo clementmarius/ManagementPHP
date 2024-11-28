@@ -9,7 +9,10 @@ require_once __DIR__ . '/../models/UserModel.php';
 class AuthController
 
 {
-    public function login() {
-        
+    public function login()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 }
