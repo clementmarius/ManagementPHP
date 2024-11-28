@@ -50,7 +50,7 @@ unset($_SESSION['login_error'], $_SESSION['success_message']);
         <input type="password" id="password" name="password" placeholder="Password" required><br>
 
         <input type="hidden" name="csrf_token" value="">
-        <input type="submit" value="Log In">
+        <input type="submit" value="login">
     </form>
 </body>
 
