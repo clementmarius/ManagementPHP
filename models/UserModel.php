@@ -72,4 +72,23 @@ class UserModel
             return "Erreur SQL : " . $e->getMessage(); // Retourner l'erreur pour débogage
         }
     }
+
+    public function showUser($first_name, $last_name, $email, $date_of_birth, $password) {
+
+        try{
+            $stmt = $this->pdo->prepare("SELECT first_name, last_name, date_of_birth, email FROM users 
+            WHERE = :first_name, :last_name, :date_of_birth, :email");
+
+            $stmt->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+            $stmt->bindParam(':last_name', $first_name, PDO::PARAM_STR);
+            $stmt->bindParam(':date_of_birth', $first_name, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $first_name, PDO::PARAM_STR);
+
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            error_log("Erreur SQL : " . $e->getMessage());
+            return "Erreur SQL : " . $e->getMessage();
+        }
+    }
 }
