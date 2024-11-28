@@ -78,16 +78,20 @@ class UserController
                 $date_of_birth = htmlspecialchars(trim($_GET['date_of_birth'] ?? ''));
                 $email = htmlspecialchars(trim($_GET['email'] ?? ''));
 
-                error_log("Donnees soumises : " . json_encode([
+
+                $_SESSION['user_data'] = [
                     'firstName' => $first_name,
                     'lastName' => $last_name,
                     'dateOfBirth' => $date_of_birth,
                     'email' => $email
-                ]));
+                ];
+
+                error_log("Donnees soumises : " . json_encode($_SESSION['user_data']));
             }
         } catch (Exception $e) {
             $_SESSION['display_error'] = $e->getMessage();
             header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/user_profile");
+            exit;
         }
     }
 }
