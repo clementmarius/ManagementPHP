@@ -24,6 +24,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <title>Profile</title>
 </head>
 <body>
-    <p>User first name : <?php echo $this->first_name ?></p>
-</body>
+<p>User first name : <?php echo htmlspecialchars($user_data['first_name'] ?? ''); ?></p>
+    <p>User last name : <?php echo htmlspecialchars($user_data['last_name'] ?? ''); ?></p>
+    <p>Date of Birth : <?php echo htmlspecialchars($user_data['date_of_birth'] ?? ''); ?></p>
+    <p>Email : <?php echo htmlspecialchars($user_data['email'] ?? ''); ?></p></body>
 </html>

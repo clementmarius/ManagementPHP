@@ -73,22 +73,28 @@ class UserModel
         }
     }
 
-    public function showUser($first_name, $last_name, $email, $date_of_birth) {
+    public function showUser($first_name, $last_name, $email, $date_of_birth)
+{
+    try {
+        $stmt = $this->pdo->prepare("SELECT first_name, last_name, date_of_birth, email FROM users 
+            WHERE first_name = :first_name AND last_name = :last_name AND date_of_birth = :date_of_birth AND email = :email");
 
-        try{
-            $stmt = $this->pdo->prepare("SELECT first_name, last_name, date_of_birth, email FROM users 
-            WHERE = :first_name, :last_name, :date_of_birth, :email");
+        // Liaison des paramètres corrects
+        $stmt->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+        $stmt->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+        $stmt->bindParam(':date_of_birth', $date_of_birth, PDO::PARAM_STR); 
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 
-            $stmt->bindParam(':first_name', $first_name, PDO::PARAM_STR);
-            $stmt->bindParam(':last_name', $last_name, PDO::PARAM_STR);
-            $stmt->bindParam(':date_of_birth', $email, PDO::PARAM_STR);
-            $stmt->bindParam(':email', $date_of_birth, PDO::PARAM_STR);
+        $stmt->execute();
 
-            $stmt->execute();
-            return true;
-        } catch (PDOException $e) {
-            error_log("Erreur SQL : " . $e->getMessage());
-            return "Erreur SQL : " . $e->getMessage();
-        }
+        // Récupération des résultats
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $user ?: false; // Retourne les données ou false si aucun résultat
+    } catch (PDOException $e) {
+        error_log("Erreur SQL : " . $e->getMessage());
+        return "Erreur SQL : " . $e->getMessage();
     }
+}
+
 }

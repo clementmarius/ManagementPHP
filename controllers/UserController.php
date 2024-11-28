@@ -51,7 +51,6 @@ class UserController
                 if ($result === true) {
                     $_SESSION['success_message'] = "Enregistrement réussi !";
                     header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
-                    /* echo ("ok co"); */
                     exit;
                 } else {
                     throw new Exception($result);
@@ -78,18 +77,21 @@ class UserController
                 $date_of_birth = htmlspecialchars(trim($_GET['date_of_birth'] ?? ''));
                 $email = htmlspecialchars(trim($_GET['email'] ?? ''));
 
+                $userModel = new UserModel();
+                $result = $userModel->showUser($first_name, $last_name, $email, $date_of_birth);
 
-                $_SESSION['user_data'] = [
-                    'firstName' => $first_name,
-                    'lastName' => $last_name,
-                    'dateOfBirth' => $date_of_birth,
-                    'email' => $email
-                ];
 
-                error_log("Donnees soumises : " . json_encode($_SESSION['user_data']));
+                if ($result) {
+                    $_SESSION['user_data'] = $result;
+                    error_log("Utilisateur trouve : " . json_encode($result));
+                } else {
+                    $_SESSION['display_error'] = "Utilisateur introuvable.";
+                    error_log("Utilisateur introuvable avec les donnees fournies.");
+                }
             }
         } catch (Exception $e) {
             $_SESSION['display_error'] = $e->getMessage();
+            error_log("Erreur dans showUserProfile : " . $e->getMessage());
             header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/user_profile");
             exit;
         }
