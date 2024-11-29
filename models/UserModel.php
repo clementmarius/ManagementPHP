@@ -97,7 +97,7 @@ class UserModel
     }
 }
 
-public function findUserById()
+public function findUserById(int $id): void
 {
     
 }
