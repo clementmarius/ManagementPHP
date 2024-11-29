@@ -97,4 +97,9 @@ class UserModel
     }
 }
 
+public function findUserById()
+{
+    
+}
+
 }
