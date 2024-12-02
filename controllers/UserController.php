@@ -78,7 +78,7 @@ class UserController
                 $email = htmlspecialchars(trim($_GET['email'] ?? ''));
 
                 $userModel = new UserModel();
-    
+
                 $result = $userModel->showUser($first_name, $last_name, $email, $date_of_birth);
 
 
@@ -98,7 +98,29 @@ class UserController
         }
     }
 
-    public function findUserId(){
-        
+    public function findUserId()
+    {
+        try {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                $id = htmlspecialchars(trim($_GET['id'] ?? ''));
+                $userModel = new UserModel();
+                $result = $userModel->findUserById($id);
+                if ($result) {
+                    $_SESSION['user_data'] = $result;
+                    error_log("Utilisateur trouvé : " . json_encode($result));
+                } else {
+                    $_SESSION['display_error'] = "Utilisateur introuvable";
+                    error_log("Utilisateur introuvable avec les données fournies.");
+                }
+            }
+        } catch (Exception $e) {
+            $_SESSION['display_error'] = $e->getMessage();
+            error_log("Erreur dans showUserProfile : " . $e->getMessage());
+            header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/user_profile");
+            exit;
+        }
     }
 }
