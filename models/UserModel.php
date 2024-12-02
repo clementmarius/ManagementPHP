@@ -99,7 +99,11 @@ class UserModel
 
 public function findUserById(int $id): void
 {
-    
+    $request = "SELECT * FROM users WHERE id = :id LIMIT 1";
+
+    $stmt = $this->pdo->prepare($request);
+
+    $stmt->bindParam(":id", $id, PDO::PARAM_INT);
 }
 
 }
