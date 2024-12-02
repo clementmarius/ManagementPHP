@@ -97,4 +97,8 @@ class UserController
             exit;
         }
     }
+
+    public function findUserId(){
+        
+    }
 }
