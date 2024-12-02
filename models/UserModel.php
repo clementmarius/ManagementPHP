@@ -13,7 +13,7 @@ class UserModel
 {
     private $pdo;
 
-    public function __construct(int $id, string $last_name, string $first_name, DateTime $date_of_birth, string $email, string $password, bool $is_active, ?DateTime $deleted_at, ?PDO $pdo null)
+    public function __construct()
     {
         try {
             $this->pdo = getDatabaseConnection();
@@ -22,16 +22,6 @@ class UserModel
             error_log("Erreur de connexion à la base de données : " . $e->getMessage());
             die("Erreur de connexion à la base de données : " . htmlspecialchars($e->getMessage()));
         }
-
-        $this->pdo = $pdo ?: getDatabaseConnection();
-        $this->id = $id;
-        $this->last_name = $last_name;
-        $this->first_name = $first_name;
-        $this->date_of_birth = $date_of_birth;
-        $this->email = $email;
-        $this->password = $password;
-        $this->is_active = $is_active;
-        $this->deteled_at = $deleted_at;
     }
 
     public function verifUser($email, $password)
@@ -108,7 +98,7 @@ class UserModel
         }
     }
 
-    public function findUserById(int $id): ?UserModel
+    public function findUserById(int $id): array
     {
         $request = "SELECT * FROM users WHERE id = :id LIMIT 1";
 
@@ -121,22 +111,12 @@ class UserModel
             $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if (!$data) {
-                throw new Error("Failed to find user : User doesn't exist");
+                return ['success' => false, 'message' => "Utilisateur non trouvé."];
             }
-
-            return new UserModel(
-                $data['id'],
-                $data['last_name'],
-                $data['first_name'],
-                new DateTime($data['date_of_birth']),
-                $data['email'],
-                $data['password'],
-                (bool) $data['is_active'],
-                $this->pdo
-            );
-
+            return ['success' => true, 'user' => $data];
         } catch (PDOException $e) {
-            throw new Error("Find user by id failed :" . $e->getMessage());
+            error_log("Échec de la recherche de l'utilisateur par ID : " . $e->getMessage());
+            return ['success' => false, 'message' => "Erreur interne, veuillez réessayer plus tard."];
         }
     }
 }
