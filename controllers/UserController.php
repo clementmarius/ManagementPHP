@@ -51,7 +51,6 @@ class UserController
                 if ($result === true) {
                     $_SESSION['success_message'] = "Enregistrement réussi !";
                     header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
-                    /* echo ("ok co"); */
                     exit;
                 } else {
                     throw new Exception($result);
@@ -62,6 +61,65 @@ class UserController
             header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
 
             echo ($e->getMessage());
+            exit;
+        }
+    }
+
+    public function showUserProfile()
+    {
+        try {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                $first_name = htmlspecialchars(trim($_GET['first_name'] ?? ''));
+                $last_name = htmlspecialchars(trim($_GET['last_name'] ?? ''));
+                $date_of_birth = htmlspecialchars(trim($_GET['date_of_birth'] ?? ''));
+                $email = htmlspecialchars(trim($_GET['email'] ?? ''));
+
+                $userModel = new UserModel();
+
+                $result = $userModel->showUser($first_name, $last_name, $email, $date_of_birth);
+
+
+                if ($result) {
+                    $_SESSION['user_data'] = $result;
+                    error_log("Utilisateur trouve : " . json_encode($result));
+                } else {
+                    $_SESSION['display_error'] = "Utilisateur introuvable.";
+                    error_log("Utilisateur introuvable avec les donnees fournies.");
+                }
+            }
+        } catch (Exception $e) {
+            $_SESSION['display_error'] = $e->getMessage();
+            error_log("Erreur dans showUserProfile : " . $e->getMessage());
+            header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/user_profile");
+            exit;
+        }
+    }
+
+    public function findUserId()
+    {
+        try {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                $id = htmlspecialchars(trim($_GET['id'] ?? ''));
+                $userModel = new UserModel();
+                $result = $userModel->findUserById($id);
+                if ($result) {
+                    $_SESSION['user_data'] = $result;
+                    error_log("Utilisateur trouvé : " . json_encode($result));
+                } else {
+                    $_SESSION['display_error'] = "Utilisateur introuvable";
+                    error_log("Utilisateur introuvable avec les données fournies.");
+                }
+            }
+        } catch (Exception $e) {
+            $_SESSION['display_error'] = $e->getMessage();
+            error_log("Erreur dans showUserProfile : " . $e->getMessage());
+            header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/user_profile");
             exit;
         }
     }
