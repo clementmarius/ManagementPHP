@@ -50,7 +50,10 @@ class UserController
 
                 if ($result === true) {
                     $_SESSION['success_message'] = "Enregistrement réussi !";
-                    header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+                    /*                     header(header: "Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+ */
+
+                    header("Location: /PhpPoo/ManagementPHP/login.php");
                     exit;
                 } else {
                     throw new Exception($result);
@@ -58,8 +61,9 @@ class UserController
             }
         } catch (Exception $e) {
             $_SESSION['register_error'] = $e->getMessage();
-            header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
-
+            /*             header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+ */
+            header("Location: /PhpPoo/ManagementPHP/register.php");
             echo ($e->getMessage());
             exit;
         }
@@ -93,7 +97,9 @@ class UserController
         } catch (Exception $e) {
             $_SESSION['display_error'] = $e->getMessage();
             error_log("Erreur dans showUserProfile : " . $e->getMessage());
-            header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/user_profile");
+            /*             header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/user_profile");
+ */
+            header("Location: /PhpPoo/ManagementPHP/user_profile.php");
             exit;
         }
     }
