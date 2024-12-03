@@ -104,14 +104,15 @@ class UserController
         }
     }
 
-    public function findUserId()
+    public function findUserId($id)
     {
         try {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
             if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-                $id = htmlspecialchars(trim($_GET['id'] ?? ''));
+                /*                 $id = htmlspecialchars(trim($_GET['id'] ?? ''));
+ */
                 $userModel = new UserModel();
                 $result = $userModel->findUserById($id);
                 if ($result) {
@@ -125,7 +126,9 @@ class UserController
         } catch (Exception $e) {
             $_SESSION['display_error'] = $e->getMessage();
             error_log("Erreur dans showUserProfile : " . $e->getMessage());
-            header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/user_profile");
+            /*             header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/user_profile");
+ */
+            header("Location: /PhpPoo/ManagementPHP/user_profile.php");
             exit;
         }
     }
