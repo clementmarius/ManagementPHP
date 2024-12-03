@@ -39,7 +39,7 @@ unset($_SESSION['register_error'], $_SESSION['success_message']);
         <div class="error"><?php echo htmlspecialchars($success); ?></div>
     <?php endif; ?>
 
-    <form action="" method="post" enctype="multipart/form-data">
+    <form action="/PhpPoo/ManagementPhp/register" method="post" enctype="multipart/form-data">
         <h2>Register</h2>
 
         <label for="name">First Name&nbsp;:</label>

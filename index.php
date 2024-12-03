@@ -4,7 +4,6 @@ require_once '../ManagementPHP/controllers/UserController.php';
 require_once '../ManagementPHP/controllers/Router.php';
 
 use App\Management\Controllers\Router;
-use App\Management\Controllers\UserController;
 
 $router = new Router();
 
