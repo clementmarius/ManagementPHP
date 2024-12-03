@@ -58,6 +58,8 @@ class UserController
                 } else {
                     throw new Exception($result);
                 }
+            } else {
+                require_once __DIR__ . '/../views/register.php';
             }
         } catch (Exception $e) {
             $_SESSION['register_error'] = $e->getMessage();
