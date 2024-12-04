@@ -34,6 +34,6 @@ class Router
                 return;
             }
         }
-        echo 'Error 404 : La page n\'existe pas';
+        echo 'Error 404 : La page n\'existe pas' ;
     }
 }
