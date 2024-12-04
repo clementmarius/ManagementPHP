@@ -1,7 +1,7 @@
 <?php
 
 require_once '../ManagementPHP/controllers/UserController.php';
-require_once '../ManagementPHP/controllers/Router.php';
+require_once '../ManagementPHP/Router/Router.php';
 
 use App\Management\Controllers\Router;
 
