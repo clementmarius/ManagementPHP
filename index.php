@@ -3,7 +3,7 @@
 require_once '../ManagementPHP/controllers/UserController.php';
 require_once '../ManagementPHP/Router/Router.php';
 
-use App\Management\Controllers\Router;
+use App\Management\Router\Router\Router;
 
 $router = new Router();
 
