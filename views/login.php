@@ -40,7 +40,7 @@ unset($_SESSION['login_error'], $_SESSION['success_message']);
     <?php endif; ?>
 
 
-    <form action="" method="POST">
+    <form action="/PhpPoo/Management/login" method="POST">
 
         <h2>Login Page</h2>
         <label for="email">Email&nbsp;</label>
