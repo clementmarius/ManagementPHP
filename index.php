@@ -24,9 +24,7 @@ $router->get(path:'/login', controllerMethod:'App\Management\Controllers\AuthCon
 $router->post(path:'/login', controllerMethod:'App\Management\Controllers\AuthController@login');
 
 //Home
-$router->get(path:'/', controllerMethod: function (){
-    echo 'Home page logout';
-});
+$router->get(path:'/', controllerMethod: 'App\Management\Controllers\HomeController@home');
 
 // Dispatcher la requete 
 

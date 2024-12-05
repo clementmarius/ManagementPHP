@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Management\Controllers;
+
 class HomeController
 {
 
