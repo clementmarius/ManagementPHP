@@ -1,8 +1,4 @@
 <?php
-
-/* require_once '../ManagementPHP/controllers/UserController.php';
-require_once '../ManagementPHP/Router/Router.php'; */
-
 require_once __DIR__ . '/controllers/UserController.php';
 require_once __DIR__ . '/Router/Router.php';
 
