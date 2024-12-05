@@ -24,6 +24,7 @@ $router->get('/test', function () {
 /* $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
  */
 $uri = str_replace('/PhpPoo/ManagementPHP', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+var_dump($uri);
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
 $router->dispatch($uri, $requestMethod);
