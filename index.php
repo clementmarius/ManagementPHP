@@ -20,7 +20,7 @@ $router->get(path: '/test', controllerMethod: function () {
 });
 
 //Auth :
-$router->get(path:'/login', controllerMethod:'App\Management\Controllers\AuthController@login');
+$router->get(path:'/login', controllerMethod:'App\Management\Controllers\AuthController@showLoginForm');
 $router->post(path:'/login', controllerMethod:'App\Management\Controllers\AuthController@login');
 
 // Dispatcher la requete 

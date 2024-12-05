@@ -56,7 +56,7 @@ class AuthController
                 /* header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
                 exit; */
 
-                header("Location: /PhpPoo/ManagementPHP/login.php");
+                header("Location: /PhpPoo/ManagementPHP/login");
                 exit;
             }
         }
@@ -67,7 +67,16 @@ class AuthController
 
         /* header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
         exit; */
-        header("Location: /PhpPoo/ManagementPHP/login.php");
+        header("Location: /PhpPoo/ManagementPHP/login");
         exit;
+    }
+
+    public function showLoginForm()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        require_once __DIR__ . '/../views/login.php';
     }
 }
