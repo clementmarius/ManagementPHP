@@ -53,7 +53,10 @@ class AuthController
             } else {
                 $_SESSION['login_err'] = $result;
                 $_SESSION['email'] = $email;
-                header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+                /* header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+                exit; */
+
+                header("Location: /PhpPoo/ManagementPHP/login.php");
                 exit;
             }
         }
@@ -62,7 +65,9 @@ class AuthController
             $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         } */
 
-        header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+        /* header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+        exit; */
+        header("Location: /PhpPoo/ManagementPHP/login.php");
         exit;
     }
 }
