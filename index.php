@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/controllers/UserController.php';
+require_once __DIR__ . '/controllers/AuthController.php';
 require_once __DIR__ . '/Router/Router.php';
 
 
@@ -9,13 +10,17 @@ $router = new Router();
 
 //Definir les routes
 
+//User :
 $router->get(path: '/register', controllerMethod: 'App\Management\Controllers\UserController@register');
 $router->post(path: '/register', controllerMethod: 'App\Management\Controllers\UserController@register');
-$router->get('/user/profile', 'App\Management\Controllers\UserController@showUserProfile');
-$router->get('/user/(\d+)', 'App\Management\Controllers\UserController@findUserId');
-$router->get('/test', function () {
+$router->get(path: '/user/profile', controllerMethod: 'App\Management\Controllers\UserController@showUserProfile');
+$router->get(path: '/user/(\d+)', controllerMethod: 'App\Management\Controllers\UserController@findUserId');
+$router->get(path: '/test', controllerMethod: function () {
     echo 'Test route works!';
 });
+
+//Auth :
+$router->post(path:'/login', controllerMethod:'');
 
 // Dispatcher la requete 
 
