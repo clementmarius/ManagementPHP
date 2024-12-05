@@ -3,9 +3,9 @@ require_once __DIR__ . '/controllers/UserController.php';
 require_once __DIR__ . '/controllers/AuthController.php';
 require_once __DIR__ . '/Router/Router.php';
 require_once __DIR__ . '/Controllers/HomeController.php';
+/* require_once __DIR__ . 'controllers/PostController.php';
+ */
 
-
-use App\Management\Controllers\HomeController;
 use App\Management\Router\Router\Router;
 
 $router = new Router();
@@ -27,6 +27,9 @@ $router->post(path:'/login', controllerMethod:'App\Management\Controllers\AuthCo
 
 //Home
 $router->get(path:'/', controllerMethod: 'App\Management\Controllers\HomeController@home');
+
+//Post
+$router->get(path: 'view_post', controllerMethod:'App\Management\Controllers\PostController@viewPost');
 // Dispatcher la requete 
 
 $uri = trim(str_replace(['/PhpPoo/ManagementPHP', '.php'], '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)), '/');
