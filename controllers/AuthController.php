@@ -18,11 +18,6 @@ class AuthController
         $_SESSION['email_err'] = $_SESSION['password_err'] = $_SESSION['login_err'] = '';
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            /* if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-                $_SESSION['login_err'] = "Token CSRF invalide.";
-                header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
-                exit;
-            } */
 
             $email = htmlspecialchars(trim($_POST["email"] ?? ''));
             $password = htmlspecialchars(trim($_POST["password"] ?? ''));
@@ -39,7 +34,7 @@ class AuthController
 
             if (!empty($_SESSION['email_err']) || !empty($_SESSION['password_err'])) {
                 $_SESSION['email'] = $email;
-                header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+                header("Location: /login");
                 exit;
             }
 
@@ -53,16 +48,23 @@ class AuthController
             } else {
                 $_SESSION['login_err'] = $result;
                 $_SESSION['email'] = $email;
-                header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+
+
+                header("Location: /login");
                 exit;
             }
         }
 
-        /* if (!isset($_SESSION['csrf_token'])) {
-            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-        } */
-
-        header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+        header("Location: /login");
         exit;
+    }
+
+    public function showLoginForm()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        require_once __DIR__ . '/../views/login.php';
     }
 }
