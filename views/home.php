@@ -7,8 +7,9 @@
 </head>
 <body>
     <p>This is the home page while you are log out : </p>
-    <ul>
+    <div>
         <button onclick="location.href = 'register' ;"><li>Register</li></button>
-    </ul>
+        <button onclick="location.href = 'login' ;"><li>Login</li></button>
+    </div>
 </body>
 </html>
