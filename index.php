@@ -1,7 +1,11 @@
 <?php
 
-require_once '/../controllers/UserController.php';
-require_once '/../Router/Router.php';
+/* require_once '../ManagementPHP/controllers/UserController.php';
+require_once '../ManagementPHP/Router/Router.php'; */
+
+require_once __DIR__ . '/controllers/UserController.php';
+require_once __DIR__ . '/Router/Router.php';
+
 
 use App\Management\Router\Router\Router;
 
@@ -17,7 +21,9 @@ $router->get('/test', function () {
 });
 
 // Dispatcher la requete 
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+/* $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+ */
+$uri = str_replace('/PhpPoo/ManagementPHP', '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 
 $router->dispatch($uri, $requestMethod);
