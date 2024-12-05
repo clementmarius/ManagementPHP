@@ -65,7 +65,3 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #004b9a;
 }
-
-img{
-    width: 150px;
-}
