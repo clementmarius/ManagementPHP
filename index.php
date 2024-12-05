@@ -23,6 +23,11 @@ $router->get(path: '/test', controllerMethod: function () {
 $router->get(path:'/login', controllerMethod:'App\Management\Controllers\AuthController@showLoginForm');
 $router->post(path:'/login', controllerMethod:'App\Management\Controllers\AuthController@login');
 
+//Home
+$router->get(path:'/', controllerMethod: function (){
+    echo 'Home page logout';
+});
+
 // Dispatcher la requete 
 
 $uri = trim(str_replace(['/PhpPoo/ManagementPHP', '.php'], '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)), '/');
