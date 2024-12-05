@@ -2,6 +2,8 @@
 
 namespace App\Management\Controllers;
 
+use App\Management\Router\Router;
+
 class HomeController
 {
 
