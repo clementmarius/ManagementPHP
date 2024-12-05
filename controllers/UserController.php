@@ -18,9 +18,6 @@ class UserController
             }
 
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                /* if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-                    throw new Exception("CSRF token invalide."); */
-                /* } */
 
                 $first_name = htmlspecialchars(trim($_POST['first_name'] ?? ''));
                 $last_name = htmlspecialchars(trim($_POST['last_name'] ?? ''));
@@ -50,7 +47,7 @@ class UserController
 
                 if ($result === true) {
                     $_SESSION['success_message'] = "Enregistrement réussi !";
-                    header("Location: /PhpPoo/ManagementPHP/login.php");
+                    header("Location: /login");
                     exit;
                 } else {
                     throw new Exception($result);
@@ -60,7 +57,8 @@ class UserController
             }
         } catch (Exception $e) {
             $_SESSION['register_error'] = $e->getMessage();
-            header("Location: /PhpPoo/ManagementPHP/register.php");
+            error_log("Erreur d'enregistrement : " . $e->getMessage()); // Log de l'erreur pour débogage
+            header("Location: /register");
             echo ($e->getMessage());
             exit;
         }
@@ -94,8 +92,6 @@ class UserController
         } catch (Exception $e) {
             $_SESSION['display_error'] = $e->getMessage();
             error_log("Erreur dans showUserProfile : " . $e->getMessage());
-            /*             header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/user_profile");
- */
             header("Location: /PhpPoo/ManagementPHP/user_profile.php");
             exit;
         }
@@ -108,8 +104,6 @@ class UserController
                 session_start();
             }
             if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-                /*                 $id = htmlspecialchars(trim($_GET['id'] ?? ''));
- */
                 $userModel = new UserModel();
                 $result = $userModel->findUserById($id);
                 if ($result) {
@@ -123,8 +117,6 @@ class UserController
         } catch (Exception $e) {
             $_SESSION['display_error'] = $e->getMessage();
             error_log("Erreur dans showUserProfile : " . $e->getMessage());
-            /*             header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/user_profile");
- */
             header("Location: /PhpPoo/ManagementPHP/user_profile.php");
             exit;
         }

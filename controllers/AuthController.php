@@ -34,7 +34,7 @@ class AuthController
 
             if (!empty($_SESSION['email_err']) || !empty($_SESSION['password_err'])) {
                 $_SESSION['email'] = $email;
-                header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/login.php");
+                header("Location: /login");
                 exit;
             }
 
@@ -50,12 +50,12 @@ class AuthController
                 $_SESSION['email'] = $email;
 
 
-                header("Location: /PhpPoo/ManagementPHP/login");
+                header("Location: /login");
                 exit;
             }
         }
 
-        header("Location: /PhpPoo/ManagementPHP/login");
+        header("Location: /login");
         exit;
     }
 
