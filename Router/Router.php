@@ -18,22 +18,30 @@ class Router
 
     public function dispatch($uri, $requestMethod)
     {
+        // Affichage des routes disponibles pour le debug
+        error_log("Routes disponibles pour la méthode $requestMethod : " . print_r($this->routes[$requestMethod], true));
+        error_log("URI demandée : $uri");
+
+        if (!isset($this->routes[$requestMethod])) {
+            echo 'Erreur 404 : Méthode non prise en charge';
+            return;
+        }
+
         foreach ($this->routes[$requestMethod] as $path => $controllerMethod) {
             if (preg_match("#^$path$#", $uri, $matches)) {
-                // Extract the controller and method name
-                list($controller, $method) = explode('@', $controllerMethod);
+                if (is_callable($controllerMethod)) {
+                    call_user_func($controllerMethod);
+                    return;
+                }
 
-                // Instantiate the controller
+                list($controller, $method) = explode('@', $controllerMethod);
                 $controllerInstance = new $controller();
 
-                // Remove the matched path from the URI
                 array_shift($matches);
-
-                // Call the controller method with the remaining URI parts as arguments
                 call_user_func_array([$controllerInstance, $method], $matches);
                 return;
             }
         }
-        echo 'Error 404 : La page n\'existe pas' ;
+        echo 'Erreur 404 : La page n\'existe pas';
     }
 }
