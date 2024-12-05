@@ -19,8 +19,8 @@ class Router
     public function dispatch($uri, $requestMethod)
     {
 
-        var_dump($uri, $requestMethod);
-        // Affichage des routes disponibles pour le debug
+/*         var_dump($uri, $requestMethod);
+ */        // Affichage des routes disponibles pour le debug
         error_log("Routes disponibles pour la méthode $requestMethod : " . print_r($this->routes[$requestMethod], true));
         error_log("URI demandée : $uri");
 

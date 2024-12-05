@@ -32,6 +32,6 @@ $router->get(path:'/', controllerMethod: function (){
 
 $uri = trim(str_replace(['/PhpPoo/ManagementPHP', '.php'], '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)), '/');
 
-var_dump($uri);
+/* var_dump($uri); */
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 $router->dispatch(uri: '/' . $uri, requestMethod: $requestMethod);
