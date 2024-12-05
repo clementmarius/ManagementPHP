@@ -3,8 +3,8 @@ require_once __DIR__ . '/controllers/UserController.php';
 require_once __DIR__ . '/controllers/AuthController.php';
 require_once __DIR__ . '/Router/Router.php';
 require_once __DIR__ . '/Controllers/HomeController.php';
-/* require_once __DIR__ . 'controllers/PostController.php';
- */
+require_once __DIR__ . 'controllers/PostController.php';
+
 
 use App\Management\Router\Router\Router;
 

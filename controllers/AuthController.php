@@ -45,7 +45,7 @@ class AuthController
                 $_SESSION['user'] = $result;
                 /*                 header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/view_posts.php");
  */
-                header("Location: /view_post");
+                header("Location: /view_posts");
                 exit;
             } else {
                 $_SESSION['login_err'] = $result;
