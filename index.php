@@ -29,7 +29,7 @@ $router->post(path: '/login', controllerMethod: 'App\Management\Controllers\Auth
 $router->get(path: '/', controllerMethod: 'App\Management\Controllers\HomeController@home');
 
 //Post
-$router->get(path: 'view_posts', controllerMethod: 'App\Management\Controllers\PostController@viewPost');
+$router->get(path: '/view_posts', controllerMethod: 'App\Management\Controllers\PostController@viewPost');
 // Dispatcher la requete 
 
 $uri = trim(str_replace(['/PhpPoo/ManagementPHP', '.php'], '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)), '/');
