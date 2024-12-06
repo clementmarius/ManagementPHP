@@ -22,18 +22,18 @@ $router->get(path: '/test', controllerMethod: function () {
 });
 
 //Auth :
-$router->get(path:'/login', controllerMethod:'App\Management\Controllers\AuthController@showLoginForm');
-$router->post(path:'/login', controllerMethod:'App\Management\Controllers\AuthController@login');
+$router->get(path: '/login', controllerMethod: 'App\Management\Controllers\AuthController@showLoginForm');
+$router->post(path: '/login', controllerMethod: 'App\Management\Controllers\AuthController@login');
 
 //Home
-$router->get(path:'/', controllerMethod: 'App\Management\Controllers\HomeController@home');
+$router->get(path: '/', controllerMethod: 'App\Management\Controllers\HomeController@home');
 
 //Post
-$router->get(path: 'view_posts', controllerMethod:'App\Management\Controllers\PostController@viewPost');
+$router->get(path: 'view_posts', controllerMethod: 'App\Management\Controllers\PostController@viewPost');
 // Dispatcher la requete 
 
 $uri = trim(str_replace(['/PhpPoo/ManagementPHP', '.php'], '', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)), '/');
 
-/* var_dump($uri); */
+var_dump($uri);
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 $router->dispatch(uri: '/' . $uri, requestMethod: $requestMethod);
