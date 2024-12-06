@@ -92,7 +92,7 @@ class UserController
         } catch (Exception $e) {
             $_SESSION['display_error'] = $e->getMessage();
             error_log("Erreur dans showUserProfile : " . $e->getMessage());
-            header("Location: /PhpPoo/ManagementPHP/user_profile.php");
+            header("Location: /user_profile");
             exit;
         }
     }

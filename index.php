@@ -15,7 +15,7 @@ $router = new Router();
 //User :
 $router->get(path: '/register', controllerMethod: 'App\Management\Controllers\UserController@register');
 $router->post(path: '/register', controllerMethod: 'App\Management\Controllers\UserController@register');
-$router->get(path: '/user/profile', controllerMethod: 'App\Management\Controllers\UserController@showUserProfile');
+$router->get(path: '/user_profile', controllerMethod: 'App\Management\Controllers\UserController@showUserProfile');
 $router->get(path: '/user/(\d+)', controllerMethod: 'App\Management\Controllers\UserController@findUserId');
 $router->get(path: '/test', controllerMethod: function () {
     echo 'Test route works!';
