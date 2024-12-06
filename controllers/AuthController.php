@@ -43,7 +43,7 @@ class AuthController
 
             if (is_array($result)) {
                 $_SESSION['user'] = $result;
-                header("Location: " . dirname($_SERVER['SCRIPT_NAME']) . "/view_posts.php");
+                header("Location: /view_posts");
                 exit;
             } else {
                 $_SESSION['login_err'] = $result;
