@@ -32,6 +32,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <p>Date of Birth : <?php echo htmlspecialchars($user_data['date_of_birth'] ?? ''); ?></p>
     <p>Email : <?php echo htmlspecialchars($user_data['email'] ?? ''); ?></p>
     <p>More info coming :</p>
+    <p>See here :</p>
 </body>
 
 </html>
