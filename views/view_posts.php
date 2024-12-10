@@ -13,7 +13,7 @@
         <h2>This is home page, you will see the last publications</h2>
         <div id="btn">
             <button class="btn" onclick="location.href = 'localhost/PhpPoo/ManagementPHP/views/create_post.php';" id="myButton" class="float-left submit-button">Create Post</button>
-            <button class="btn" onclick="location.href = 'localhost/PhpPoo/ManagementPHP/views/user_profile.php';" id="myButton" class="float-left submit-button">View Profile</button>
+            <button class="btn" onclick="location.href = 'user_profile';" id="myButton" class="float-left submit-button">View Profile</button>
         </div>
 
     </div>
