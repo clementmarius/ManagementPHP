@@ -129,6 +129,6 @@ class UserController
             session_start();
         }
 
-        require_once __DIR__ . '/../views/test.php';
+        require_once __DIR__ . '/../views/test_user.php';
     }
 }
