@@ -21,7 +21,7 @@ $router->get(path: '/test', controllerMethod: function () {
     echo 'Test route works!';
 });
 
-$router->get(path:'/testUser', controllerMethod:'App\Management\Controllers\UserController@testUser');
+$router->get(path:'/test_user', controllerMethod:'App\Management\Controllers\UserController@testUser');
 
 //Auth :
 $router->get(path: '/login', controllerMethod: 'App\Management\Controllers\AuthController@showLoginForm');
