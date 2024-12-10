@@ -121,4 +121,8 @@ class UserController
             exit;
         }
     }
+
+    public function testUser(){
+        echo('Test working');
+    }
 }
