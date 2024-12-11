@@ -16,6 +16,8 @@
             <button class="btn" onclick="location.href = 'user_profile';" id="myButton" class="float-left submit-button">View Profile</button>
             <button class="btn" onclick="location.href = 'test_user';" id="myButton" class="float-left submit-button">Test</button>
             <p>More coming soon : </p>
+            <p>More coming soon : </p>
+        </div>
         </div>
 
     </div>
