@@ -15,7 +15,7 @@
             <button class="btn" onclick="location.href = 'localhost/PhpPoo/ManagementPHP/views/create_post.php';" id="myButton" class="float-left submit-button">Create Post</button>
             <button class="btn" onclick="location.href = 'user_profile';" id="myButton" class="float-left submit-button">View Profile</button>
             <button class="btn" onclick="location.href = 'test_user';" id="myButton" class="float-left submit-button">Test</button>
-            <p></p>
+            <p>More coming soon : </p>
         </div>
 
     </div>
