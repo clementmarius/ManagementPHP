@@ -66,38 +66,55 @@ unset($_SESSION['register_error'], $_SESSION['success_message']);
     </header>
     <!-- ./ Header -->
 
-    <!-- Form elements-->
-    <section id="form">
-        <form action="/register" method="post" enctype="multipart/form-data">
-            <h2>Register</h2>
+    <!-- Main -->
 
-            <label for="name">First Name&nbsp;:</label>
-            <input type="text" id="name" name="first_name" placeholder="First Name" value="<?php echo htmlspecialchars($_POST['first_name'] ?? ''); ?>" required>
+    <main class="container">
+        <!-- Form elements-->
+        <section id="form">
+            <form action="/register" method="post" enctype="multipart/form-data">
+                <h2>Register</h2>
+                <!-- Search -->
 
-            <label for="lastName">Last Name&nbsp;:</label>
-            <input type="text" id="lastName" name="last_name" placeholder="Last Name" value="<?php echo htmlspecialchars($_POST['last_name'] ?? ''); ?>" required>
+                <div class="">
+                    <label for="name">First Name&nbsp;:</label>
+                    <input type="text" id="name" name="first_name" placeholder="First Name" aria-label="First Name" value="<?php echo htmlspecialchars($_POST['first_name'] ?? ''); ?>" required>
 
-            <label for="start">Birthday&nbsp;:</label>
-            <input type="date" id="start" name="date_of_birth" value="<?php echo htmlspecialchars($_POST['date_of_birth'] ?? ''); ?>" required>
+                    <label for="lastName">Last Name&nbsp;:</label>
+                    <input type="text" id="lastName" name="last_name" placeholder="Last Name" aria-label="Last Name" value="<?php echo htmlspecialchars($_POST['last_name'] ?? ''); ?>" required>
 
-            <label for="email">Email&nbsp;:</label>
-            <input type="email" id="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>" required>
+                    <label for="start">Birthday&nbsp;:</label>
+                    <input type="date" id="start" name="date_of_birth" aria-label="Date of Birth" value="<?php echo htmlspecialchars($_POST['date_of_birth'] ?? ''); ?>" required>
 
-            <label for="password">password&nbsp;:</label>
-            <input type="password" id="password" name="password" placeholder="Password" required><br>
+                    <label for="email">Email&nbsp;:</label>
+                    <input type="email" id="email" name="email" placeholder="Email" aria-label="Email" value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>" required>
 
-            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?? ''; ?>">
-            <input type="submit" value="Register">
-        </form>
-    </section>
+                    <label for="password">password&nbsp;:</label>
+                    <input type="password" id="password" name="password" placeholder="Password" aria-label="Password" required><br>
 
-    <!-- ./ Form elements-->
+                    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token'] ?? ''; ?>">
+                    <input type="submit" value="Register">
+            </form>
+            </div>
+        </section>
+
+        <!-- ./ Form elements-->
+
+    </main>
+    <!-- ./ Main -->
+
+    <!-- Footer -->
+    <footer class="container">
+        <small>Built with <a href="https://picocss.com">Pico</a> •
+            <a href="https://github.com/clementmarius">Source code</a></small>
+    </footer>
+    <!-- ./ Footer -->
 
     <!-- Minimal theme switcher -->
-    <script src="js/minimal-theme-switcher.js"></script>
+    <script src="/public/assets/js/minimal-theme-switcher.js"></script>
+
 
     <!-- Modal -->
-    <script src="js/modal.js"></script>
+    <script src="/public/assets/js/modal.js"></script>
 
 </body>
 
