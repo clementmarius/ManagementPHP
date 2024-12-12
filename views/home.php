@@ -47,22 +47,18 @@
             <br>
             <h3>Log in :</h3>
             <p>Log in to your account : </p>
+            <button class="primary" onclick="location.href = 'login';">Login</button>
         </section>
     </main>
     <!-- ./ Preview -->
 
+    <!-- Minimal theme switcher -->
+    <script src="/public/assets/js/minimal-theme-switcher.js"></script>
 
 
+    <!-- Modal -->
+    <script src="/public/assets/js/modal.js"></script>
 
-    <!-- 
-    <div id="parent">
-        <h2>This is the home page while you are log out:</h2>
-        <div id="btn">
-            <button class="btn" onclick="location.href = 'register';">Register</button>
-            <button class="btn" onclick="location.href = 'login';">Login</button>
-        </div>
-    </div>
- -->
 </body>
 
 </html>
