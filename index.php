@@ -17,9 +17,11 @@ $router->get(path: '/register', controllerMethod: 'App\Management\Controllers\Us
 $router->post(path: '/register', controllerMethod: 'App\Management\Controllers\UserController@register');
 $router->get(path: '/user_profile', controllerMethod: 'App\Management\Controllers\UserController@showUserProfile');
 $router->get(path: '/user/(\d+)', controllerMethod: 'App\Management\Controllers\UserController@findUserId');
-$router->get(path: '/test', controllerMethod: function () {
-    echo 'Test route works!';
-});
+/* $router->get(path: '/test', controllerMethod: function () {
+    echo 'Test route works!'; */
+/* }); */
+$router->get(path: '/test', controllerMethod:'App\Management\Controllers\UserController@testUser');
+
 
 $router->get(path:'/test_user', controllerMethod:'App\Management\Controllers\UserController@testUser');
 

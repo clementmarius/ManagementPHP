@@ -6,6 +6,7 @@ use App\Management\Controllers\UserController;
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $controller = new UserController;
     $controller->showUserProfile();
+    $controller->findUserId(id: $id);
 }
 
 if (session_status() === PHP_SESSION_NONE) {
