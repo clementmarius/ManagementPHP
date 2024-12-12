@@ -11,7 +11,6 @@
 
 <body>
     <!-- ./ Header -->
-
     <header class="class container">
         <hgroup>
             <h1>Home Page</h1>
