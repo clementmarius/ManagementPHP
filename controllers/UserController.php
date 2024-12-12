@@ -97,6 +97,40 @@ class UserController
         }
     }
 
+    public function testUser()
+    {
+        try {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                $first_name = htmlspecialchars(trim($_GET['first_name'] ?? ''));
+                $last_name = htmlspecialchars(trim($_GET['last_name'] ?? ''));
+                $date_of_birth = htmlspecialchars(trim($_GET['date_of_birth'] ?? ''));
+                $email = htmlspecialchars(trim($_GET['email'] ?? ''));
+                $userModel = new UserModel();
+
+                $result = $userModel->showUser($first_name, $last_name, $email, $date_of_birth);
+                if ($result) {
+                    $_SESSION['user_data'] = $result;
+                    error_log("Utilisateur trouve : " . json_encode($result));
+                } else {
+                    $_SESSION['display_error'] = "Utilisateur introuvable.";
+                    error_log("Utilisateur introuvable avec les donnees fournies.");
+                }
+            }
+        } catch (Exception $e) {
+            $_SESSION['display_error'] = $e->getMessage();
+            error_log("Erreur dans showUserProfile : " . $e->getMessage());
+            header("Location: /test_user");
+            exit;
+        }
+
+
+
+        require_once __DIR__ . '/../views/test_user.php';
+    }
+
     public function findUserId($id)
     {
         try {
@@ -120,15 +154,5 @@ class UserController
             header("Location: /PhpPoo/ManagementPHP/user_profile.php");
             exit;
         }
-    }
-
-    public function testUser()
-    {
-        echo ('Test working');
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
-        require_once __DIR__ . '/../views/test_user.php';
     }
 }
