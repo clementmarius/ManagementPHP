@@ -92,7 +92,7 @@ class UserController
         } catch (Exception $e) {
             $_SESSION['display_error'] = $e->getMessage();
             error_log("Erreur dans showUserProfile : " . $e->getMessage());
-            header("Location: /PhpPoo/ManagementPHP/user_profile.php");
+            header("Location: /user_profile");
             exit;
         }
     }
@@ -120,5 +120,15 @@ class UserController
             header("Location: /PhpPoo/ManagementPHP/user_profile.php");
             exit;
         }
+    }
+
+    public function testUser()
+    {
+        echo ('Test working');
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        require_once __DIR__ . '/../views/test_user.php';
     }
 }
