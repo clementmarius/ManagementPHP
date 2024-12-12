@@ -73,9 +73,7 @@ unset($_SESSION['register_error'], $_SESSION['success_message']);
         <section id="form">
             <form action="/register" method="post" enctype="multipart/form-data">
                 <h2>Register</h2>
-                <!-- Search -->
-
-                <div class="">
+                <div>
                     <label for="name">First Name&nbsp;:</label>
                     <input type="text" id="name" name="first_name" placeholder="First Name" aria-label="First Name" value="<?php echo htmlspecialchars($_POST['first_name'] ?? ''); ?>" required>
 
@@ -96,7 +94,6 @@ unset($_SESSION['register_error'], $_SESSION['success_message']);
             </form>
             </div>
         </section>
-
         <!-- ./ Form elements-->
 
     </main>

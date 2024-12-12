@@ -2,10 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../public/assets/css/user.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Pico.css -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css" />
+    <title>Main Page</title>
 </head>
 
 <body>
@@ -18,9 +22,16 @@
             <p>More coming soon : </p>
             <p>More coming soon : </p>
         </div>
-        </div>
+    </div>
 
     </div>
+
+    <!-- Minimal theme switcher -->
+    <script src="/public/assets/js/minimal-theme-switcher.js"></script>
+
+
+    <!-- Modal -->
+    <script src="/public/assets/js/modal.js"></script>
 
 </body>
 
