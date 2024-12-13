@@ -63,18 +63,15 @@ $user_data = $_SESSION['user_data'] ?? null;
 
         <!-- ./ Preview -->
         <section id="preview">
-            <h2>Preview</h2>
-
-            <br>
-            <p>You can see your personal inforamtions</p>
+            <h2>Preview :</h2>
         </section>
         <!-- ./ Preview -->
 
         <?php if ($user_data): ?>
-            <p>User first name : <?php echo htmlspecialchars($user_data['first_name'] ?? ''); ?></p>
-            <p>User last name : <?php echo htmlspecialchars($user_data['last_name'] ?? ''); ?></p>
-            <p>Date of Birth : <?php echo htmlspecialchars($user_data['date_of_birth'] ?? ''); ?></p>
-            <p>Email : <?php echo htmlspecialchars($user_data['email'] ?? ''); ?></p>
+            <p><kbd>first name :</kbd> <?php echo htmlspecialchars($user_data['first_name'] ?? ''); ?></p>
+            <p><kbd>User last name :</kbd> <?php echo htmlspecialchars($user_data['last_name'] ?? ''); ?></p>
+            <p><kbd>Date of Birth : </kbd><?php echo htmlspecialchars($user_data['date_of_birth'] ?? ''); ?></p>
+            <p><kbd>Email :</kbd> <?php echo htmlspecialchars($user_data['email'] ?? ''); ?></p>
         <?php else: ?>
             <p>Aucune donnée utilisateur disponible.</p>
         <?php endif; ?>
