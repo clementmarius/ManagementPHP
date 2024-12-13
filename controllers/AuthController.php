@@ -42,7 +42,7 @@ class AuthController
             $result = $userModel->verifUser($email, $password);
 
             if (is_array($result)) {
-                $_SESSION['user'] = $result;
+                $_SESSION['user_data'] = $result;
                 header("Location: /view_posts");
                 exit;
             } else {

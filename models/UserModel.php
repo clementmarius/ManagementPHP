@@ -27,7 +27,7 @@ class UserModel
     public function verifUser($email, $password)
     {
         try {
-            $stmt = $this->pdo->prepare("SELECT id, email, password FROM users WHERE email = :email");
+            $stmt = $this->pdo->prepare("SELECT id, email, first_name, last_name, date_of_birth, password FROM users WHERE email = :email");
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->execute();
 
@@ -35,7 +35,12 @@ class UserModel
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
                 if (password_verify($password, $user['password'])) {
-                    return $user;
+                    return [
+                        'first_name' => $user['first_name'],
+                        'last_name' => $user['last_name'],
+                        'email' => $user['email'],
+                        'date_of_birth'=>$user['date_of_birth']
+                    ];
                 } else {
                     return "The password or the mail is incorrect.";
                 }
@@ -77,8 +82,7 @@ class UserModel
     public function showUser($first_name, $last_name, $email, $date_of_birth)
     {
         try {
-            echo 'test';
-            $stmt = $this->pdo->prepare("SELECT first_name, last_name, date_of_birth, email FROM users 
+           $stmt = $this->pdo->prepare("SELECT first_name, last_name, date_of_birth, email FROM users 
             WHERE first_name = :first_name AND last_name = :last_name AND date_of_birth = :date_of_birth AND email = :email");
 
             // Liaison des paramètres corrects

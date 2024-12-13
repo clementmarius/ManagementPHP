@@ -1,3 +1,23 @@
+<?php
+require_once __DIR__ . '/../controllers/UserController.php';
+
+use App\Management\Controllers\UserController;
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $controller = new UserController;
+    $controller->displayUser();
+}
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+    error_log("Session démarrée.");
+}
+
+$user_data = $_SESSION['user_data'] ?? null;
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +29,7 @@
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css" />
-    <title>Main Page</title>
+    <title>User</title>
 </head>
 
 <body>
@@ -17,9 +37,9 @@
     <!-- ./ Header -->
     <header class="class container">
         <hgroup>
-            <h1>Home Page</h1>
+            <h1>User Page</h1>
             <h2>Welcome</h2>
-            <p>This is the home page, more coming soon..</p>
+            <p>This is the User page, more coming soon..</p>
         </hgroup>
         <nav>
             <ul>
@@ -40,30 +60,27 @@
 
     <!-- ./ Main -->
     <main class="container">
+
         <!-- ./ Preview -->
         <section id="preview">
-            <h2>Preview</h2>
-
-            <br>
-            <h3>Create post :</h3>
-            <p>You can add a post to your wall</p>
-            <div class="grid">
-                <button class="primary" onclick="location.href = 'localhost/PhpPoo/ManagementPHP/views/create_post.php';" id="myButton" class="float-left submit-button">Create Post</button>
-
-            </div>
-
-            <br>
-            <h3>View profile :</h3>
-            <p>View the content profile's : </p>
-            <div class="grid">
-                <button class="primary" onclick="location.href = 'user';" id="myButton" class="float-left submit-button">View Profile</button>
-
-            </div>
-            <br>
-
+            <h2>Preview :</h2>
         </section>
+        <!-- ./ Preview -->
+
+        <?php if ($user_data): ?>
+            <p><kbd>first name :</kbd> <?php echo htmlspecialchars($user_data['first_name'] ?? ''); ?></p>
+            <p><kbd>User last name :</kbd> <?php echo htmlspecialchars($user_data['last_name'] ?? ''); ?></p>
+            <p><kbd>Date of Birth : </kbd><?php echo htmlspecialchars($user_data['date_of_birth'] ?? ''); ?></p>
+            <p><kbd>Email :</kbd> <?php echo htmlspecialchars($user_data['email'] ?? ''); ?></p>
+        <?php else: ?>
+            <p>Aucune donnée utilisateur disponible.</p>
+        <?php endif; ?>
     </main>
-    <!-- ./ Preview -->
+    <!-- ./ Main -->
+
+
+
+
 
     <!-- Minimal theme switcher -->
     <script src="/public/assets/js/minimal-theme-switcher.js"></script>
@@ -71,7 +88,6 @@
 
     <!-- Modal -->
     <script src="/public/assets/js/modal.js"></script>
-
 </body>
 
 </html>
