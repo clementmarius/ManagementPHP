@@ -122,13 +122,13 @@ class UserController
         } catch (Exception $e) {
             $_SESSION['display_error'] = $e->getMessage();
             error_log("Erreur dans showUserProfile : " . $e->getMessage());
-            header("Location: /test_user");
+            header("Location: /user");
             exit;
         }
 
 
 
-        require_once __DIR__ . '/../views/test_user.php';
+        require_once __DIR__ . '/../views/user.php';
     }
 
     public function findUserId($id)
