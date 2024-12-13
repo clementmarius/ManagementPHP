@@ -47,12 +47,18 @@
             <br>
             <h3>Create post :</h3>
             <p>You can add a post to your wall</p>
-            <button class="primary" onclick="location.href = 'localhost/PhpPoo/ManagementPHP/views/create_post.php';" id="myButton" class="float-left submit-button">Create Post</button>
+            <div class="grid">
+                <button class="primary" onclick="location.href = 'localhost/PhpPoo/ManagementPHP/views/create_post.php';" id="myButton" class="float-left submit-button">Create Post</button>
+
+            </div>
 
             <br>
             <h3>View profile :</h3>
             <p>View the content profile's : </p>
-            <button class="primary" onclick="location.href = 'user';" id="myButton" class="float-left submit-button">View Profile</button>
+            <div class="grid">
+                <button class="primary" onclick="location.href = 'user';" id="myButton" class="float-left submit-button">View Profile</button>
+
+            </div>
             <br>
 
         </section>
