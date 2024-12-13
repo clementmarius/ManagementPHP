@@ -52,12 +52,9 @@
             <br>
             <h3>View profile :</h3>
             <p>View the content profile's : </p>
-            <button class="primary" onclick="location.href = 'user_profile';" id="myButton" class="float-left submit-button">View Profile</button>
+            <button class="primary" onclick="location.href = 'test_user';" id="myButton" class="float-left submit-button">View Profile</button>
             <br>
 
-            <h3>Test :</h3>
-            <p>Test route : </p>
-            <button class="primary" onclick="location.href = 'test_user';" id="myButton" class="float-left submit-button">Test</button>
         </section>
     </main>
     <!-- ./ Preview -->

@@ -2,11 +2,10 @@
 require_once __DIR__ . '/../controllers/UserController.php';
 
 use App\Management\Controllers\UserController;
-use App\Management\models\UserModel;
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $controller = new UserController;
-    $controller->testUser();
+    $controller->displayUser();
 }
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -25,7 +24,7 @@ $user_data = $_SESSION['user_data'] ?? null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>User</title>
 </head>
 
 <body>

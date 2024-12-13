@@ -64,7 +64,7 @@ class UserController
         }
     }
 
-    public function showUserProfile()
+    /* public function showUserProfile()
     {
         try {
             if (session_status() === PHP_SESSION_NONE) {
@@ -95,9 +95,9 @@ class UserController
             header("Location: /user_profile");
             exit;
         }
-    }
+    } */
 
-    public function testUser()
+    public function displayUser()
     {
         try {
             if (session_status() === PHP_SESSION_NONE) {
