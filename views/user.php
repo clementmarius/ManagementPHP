@@ -28,8 +28,6 @@ $user_data = $_SESSION['user_data'] ?? null;
 </head>
 
 <body>
-    <p>OK</p>
-    <p>Test work</p>
     <?php if ($user_data): ?>
         <p>User first name : <?php echo htmlspecialchars($user_data['first_name'] ?? ''); ?></p>
         <p>User last name : <?php echo htmlspecialchars($user_data['last_name'] ?? ''); ?></p>
