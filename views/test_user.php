@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../controllers/UserController.php';
 
 use App\Management\Controllers\UserController;
+use App\Management\models\UserModel;
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $controller = new UserController;
@@ -14,6 +15,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $user_data = $_SESSION['user_data'] ?? null;
+
 
 ?>
 
