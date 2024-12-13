@@ -22,12 +22,44 @@ $user_data = $_SESSION['user_data'] ?? null;
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <!-- Pico.css -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css" />
     <title>User</title>
 </head>
 
 <body>
+
+    <!-- ./ Header -->
+    <header class="class container">
+        <hgroup>
+            <h1>User Page</h1>
+            <h2>Welcome</h2>
+            <p>This is the User page, more coming soon..</p>
+        </hgroup>
+        <nav>
+            <ul>
+                <li>
+                    <details class="dropdown">
+                        <summary role="button" class="primary">Theme</summary>
+                        <ul>
+                            <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+                            <li><a href="#" data-theme-switcher="light">Light</a></li>
+                            <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+                        </ul>
+                    </details>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- ./ Header -->
+
+    <!-- ./ Main -->
+    <!-- ./ Preview -->
     <?php if ($user_data): ?>
         <p>User first name : <?php echo htmlspecialchars($user_data['first_name'] ?? ''); ?></p>
         <p>User last name : <?php echo htmlspecialchars($user_data['last_name'] ?? ''); ?></p>
@@ -36,6 +68,18 @@ $user_data = $_SESSION['user_data'] ?? null;
     <?php else: ?>
         <p>Aucune donnée utilisateur disponible.</p>
     <?php endif; ?>
+    <!-- ./ Preview -->
+    <!-- ./ Main -->
+
+
+
+
+    <!-- Minimal theme switcher -->
+    <script src="/public/assets/js/minimal-theme-switcher.js"></script>
+
+
+    <!-- Modal -->
+    <script src="/public/assets/js/modal.js"></script>
 </body>
 
 </html>

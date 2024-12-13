@@ -82,8 +82,7 @@ class UserModel
     public function showUser($first_name, $last_name, $email, $date_of_birth)
     {
         try {
-            echo 'test';
-            $stmt = $this->pdo->prepare("SELECT first_name, last_name, date_of_birth, email FROM users 
+           $stmt = $this->pdo->prepare("SELECT first_name, last_name, date_of_birth, email FROM users 
             WHERE first_name = :first_name AND last_name = :last_name AND date_of_birth = :date_of_birth AND email = :email");
 
             // Liaison des paramètres corrects
