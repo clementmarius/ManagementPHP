@@ -97,29 +97,4 @@ class UserController
 
         require_once __DIR__ . '/../views/user.php';
     }
-
-    public function findUserId($id)
-    {
-        try {
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
-            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-                $userModel = new UserModel();
-                $result = $userModel->findUserById($id);
-                if ($result) {
-                    $_SESSION['user_data'] = $result;
-                    error_log("Utilisateur trouvé : " . json_encode($result));
-                } else {
-                    $_SESSION['display_error'] = "Utilisateur introuvable";
-                    error_log("Utilisateur introuvable avec les données fournies.");
-                }
-            }
-        } catch (Exception $e) {
-            $_SESSION['display_error'] = $e->getMessage();
-            error_log("Erreur dans showUserProfile : " . $e->getMessage());
-            header("Location: /PhpPoo/ManagementPHP/user_profile.php");
-            exit;
-        }
-    }
 }

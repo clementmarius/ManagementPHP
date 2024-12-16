@@ -102,29 +102,7 @@ class UserModel
             return "Erreur SQL : " . $e->getMessage();
         }
     }
-
-    public function findUserById(int $id): array
-    {
-        $request = "SELECT * FROM users WHERE id = :id LIMIT 1";
-
-        $stmt = $this->pdo->prepare($request);
-
-        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-
-        try {
-            $stmt->execute();
-            $data = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if (!$data) {
-                return ['success' => false, 'message' => "Utilisateur non trouvé."];
-            }
-            return ['success' => true, 'user' => $data];
-        } catch (PDOException $e) {
-            error_log("Échec de la recherche de l'utilisateur par ID : " . $e->getMessage());
-            return ['success' => false, 'message' => "Erreur interne, veuillez réessayer plus tard."];
-        }
-    }
-
+    
     public function updateUser($id, $first_name, $last_name, $email, $date_of_birth)
     {
         try {
