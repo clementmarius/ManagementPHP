@@ -128,17 +128,29 @@ class UserModel
     public function updateUser($id, $first_name, $last_name, $email, $date_of_birth)
     {
         try {
-            $stmt = $this->pdo->prepare("UPDATE users SET first_name, last_name, email, date_of_birth WHERE id = :id");
+            // Correction de la requête SQL avec les colonnes et les placeholders correspondants
+            $stmt = $this->pdo->prepare(
+                "UPDATE users SET 
+                    first_name = :first_name, 
+                    last_name = :last_name, 
+                    email = :email, 
+                    date_of_birth = :date_of_birth 
+                 WHERE id = :id"
+            );
+
+            // Liaison des paramètres
             $stmt->bindParam(':first_name', $first_name, PDO::PARAM_STR);
             $stmt->bindParam(':last_name', $last_name, PDO::PARAM_STR);
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
             $stmt->bindParam(':date_of_birth', $date_of_birth, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
+            // Exécution de la requête
             $stmt->execute();
 
             return true;
         } catch (PDOException $e) {
-            error_log("Echec de la mise a jour des informations de l'utilisateur par ID : " . $e->getMessage());
+            error_log("Echec de la mise à jour des informations de l'utilisateur par ID : " . $e->getMessage());
             return "Erreur SQL : " . $e->getMessage();
         }
     }
