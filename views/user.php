@@ -74,7 +74,7 @@ $user_data = $_SESSION['user_data'] ?? null;
         <?php else: ?>
             <p>Aucune donnée utilisateur disponible.</p>
         <?php endif; ?>
-        <button class="primary" onclick="location.href = 'localhost/PhpPoo/ManagementPHP/views/create_post.php';" id="myButton" class="float-left submit-button">Create Post</button>
+        <button class="primary" onclick="location.href = '';" id="myButton" class="float-left submit-button">Update User</button>
     </main>
     <!-- ./ Main -->
 
