@@ -124,4 +124,8 @@ class UserModel
             return ['success' => false, 'message' => "Erreur interne, veuillez réessayer plus tard."];
         }
     }
+
+    public function updateUser(){
+        
+    }
 }
