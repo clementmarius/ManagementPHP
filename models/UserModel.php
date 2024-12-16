@@ -39,7 +39,7 @@ class UserModel
                         'first_name' => $user['first_name'],
                         'last_name' => $user['last_name'],
                         'email' => $user['email'],
-                        'date_of_birth'=>$user['date_of_birth']
+                        'date_of_birth' => $user['date_of_birth']
                     ];
                 } else {
                     return "The password or the mail is incorrect.";
@@ -82,7 +82,7 @@ class UserModel
     public function showUser($first_name, $last_name, $email, $date_of_birth)
     {
         try {
-           $stmt = $this->pdo->prepare("SELECT first_name, last_name, date_of_birth, email FROM users 
+            $stmt = $this->pdo->prepare("SELECT first_name, last_name, date_of_birth, email FROM users 
             WHERE first_name = :first_name AND last_name = :last_name AND date_of_birth = :date_of_birth AND email = :email");
 
             // Liaison des paramètres corrects
@@ -125,7 +125,21 @@ class UserModel
         }
     }
 
-    public function updateUser(){
-        
+    public function updateUser($id, $first_name, $last_name, $email, $date_of_birth)
+    {
+        try {
+            $stmt = $this->pdo->prepare("UPDATE users SET first_name, last_name, email, date_of_birth WHERE id = :id");
+            $stmt->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+            $stmt->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':date_of_birth', $date_of_birth, PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            return true;
+        } catch (PDOException $e) {
+            error_log("Echec de la mise a jour des informations de l'utilisateur par ID : " . $e->getMessage());
+            return "Erreur SQL : " . $e->getMessage();
+        }
     }
 }

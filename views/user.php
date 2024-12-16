@@ -68,7 +68,7 @@ $user_data = $_SESSION['user_data'] ?? null;
         <!-- ./ Preview -->
         <?php if ($user_data): ?>
             <p><kbd>first name :</kbd> <?php echo htmlspecialchars($user_data['first_name'] ?? ''); ?></p>
-            <p><kbd>User last name :</kbd> <?php echo htmlspecialchars($user_data['last_name'] ?? ''); ?></p>
+            <p><kbd>last name :</kbd> <?php echo htmlspecialchars($user_data['last_name'] ?? ''); ?></p>
             <p><kbd>Date of Birth : </kbd><?php echo htmlspecialchars($user_data['date_of_birth'] ?? ''); ?></p>
             <p><kbd>Email :</kbd> <?php echo htmlspecialchars($user_data['email'] ?? ''); ?></p>
         <?php else: ?>
