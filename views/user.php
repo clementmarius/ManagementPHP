@@ -66,9 +66,6 @@ $user_data = $_SESSION['user_data'] ?? null;
             <h2>Preview :</h2>
         </section>
         <!-- ./ Preview -->
-
-
-
         <?php if ($user_data): ?>
             <p><kbd>first name :</kbd> <?php echo htmlspecialchars($user_data['first_name'] ?? ''); ?></p>
             <p><kbd>User last name :</kbd> <?php echo htmlspecialchars($user_data['last_name'] ?? ''); ?></p>
@@ -77,9 +74,7 @@ $user_data = $_SESSION['user_data'] ?? null;
         <?php else: ?>
             <p>Aucune donnée utilisateur disponible.</p>
         <?php endif; ?>
-
         <button class="primary" onclick="location.href = 'localhost/PhpPoo/ManagementPHP/views/create_post.php';" id="myButton" class="float-left submit-button">Create Post</button>
-
     </main>
     <!-- ./ Main -->
 
