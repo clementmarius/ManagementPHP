@@ -98,28 +98,37 @@ class UserController
         require_once __DIR__ . '/../views/user.php';
     }
 
-    public function findUserId($id)
+    public function updateCurrentUser()
     {
         try {
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
-            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $id = htmlspecialchars($_POST['id'] ?? '');
+                $first_name = htmlspecialchars(trim($_POST['first_name'] ?? ''));
+                $last_name = htmlspecialchars(trim($_POST['last_name'] ?? ''));
+                $date_of_birth = htmlspecialchars(trim($_POST['date_of_birth'] ?? ''));
+                $email = htmlspecialchars(trim($_POST['email'] ?? ''));
                 $userModel = new UserModel();
-                $result = $userModel->findUserById($id);
-                if ($result) {
-                    $_SESSION['user_data'] = $result;
-                    error_log("Utilisateur trouvé : " . json_encode($result));
-                } else {
-                    $_SESSION['display_error'] = "Utilisateur introuvable";
-                    error_log("Utilisateur introuvable avec les données fournies.");
-                }
+
+                $result = $userModel->updateUser($id, $first_name, $last_name, $email, $date_of_birth);
             }
         } catch (Exception $e) {
             $_SESSION['display_error'] = $e->getMessage();
-            error_log("Erreur dans showUserProfile : " . $e->getMessage());
-            header("Location: /PhpPoo/ManagementPHP/user_profile.php");
+            error_log("Erreur dans Update User : " . $e->getMessage());
+            header("Loaction: /update_user");
             exit;
         }
+
+        require_once __DIR__ . '/../views/update_user.php';
+
+    }
+
+    public function showUserForm(){
+        if(session_status()=== PHP_SESSION_NONE){
+            session_start();
+        }
+        require_once __DIR__ . '/../views/update_user.php';
     }
 }

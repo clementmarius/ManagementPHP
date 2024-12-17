@@ -39,7 +39,7 @@ class UserModel
                         'first_name' => $user['first_name'],
                         'last_name' => $user['last_name'],
                         'email' => $user['email'],
-                        'date_of_birth'=>$user['date_of_birth']
+                        'date_of_birth' => $user['date_of_birth']
                     ];
                 } else {
                     return "The password or the mail is incorrect.";
@@ -82,7 +82,7 @@ class UserModel
     public function showUser($first_name, $last_name, $email, $date_of_birth)
     {
         try {
-           $stmt = $this->pdo->prepare("SELECT first_name, last_name, date_of_birth, email FROM users 
+            $stmt = $this->pdo->prepare("SELECT first_name, last_name, date_of_birth, email FROM users 
             WHERE first_name = :first_name AND last_name = :last_name AND date_of_birth = :date_of_birth AND email = :email");
 
             // Liaison des paramètres corrects
@@ -102,26 +102,34 @@ class UserModel
             return "Erreur SQL : " . $e->getMessage();
         }
     }
-
-    public function findUserById(int $id): array
+    
+    public function updateUser($id, $first_name, $last_name, $email, $date_of_birth)
     {
-        $request = "SELECT * FROM users WHERE id = :id LIMIT 1";
-
-        $stmt = $this->pdo->prepare($request);
-
-        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
-
         try {
-            $stmt->execute();
-            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+            // Correction de la requête SQL avec les colonnes et les placeholders correspondants
+            $stmt = $this->pdo->prepare(
+                "UPDATE users SET 
+                    first_name = :first_name, 
+                    last_name = :last_name, 
+                    email = :email, 
+                    date_of_birth = :date_of_birth 
+                 WHERE id = :id"
+            );
 
-            if (!$data) {
-                return ['success' => false, 'message' => "Utilisateur non trouvé."];
-            }
-            return ['success' => true, 'user' => $data];
+            // Liaison des paramètres
+            $stmt->bindParam(':first_name', $first_name, PDO::PARAM_STR);
+            $stmt->bindParam(':last_name', $last_name, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':date_of_birth', $date_of_birth, PDO::PARAM_STR);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+            // Exécution de la requête
+            $stmt->execute();
+
+            return true;
         } catch (PDOException $e) {
-            error_log("Échec de la recherche de l'utilisateur par ID : " . $e->getMessage());
-            return ['success' => false, 'message' => "Erreur interne, veuillez réessayer plus tard."];
+            error_log("Echec de la mise à jour des informations de l'utilisateur par ID : " . $e->getMessage());
+            return "Erreur SQL : " . $e->getMessage();
         }
     }
 }

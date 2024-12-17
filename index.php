@@ -15,8 +15,9 @@ $router = new Router();
 //User :
 $router->get(path: '/register', controllerMethod: 'App\Management\Controllers\UserController@register');
 $router->post(path: '/register', controllerMethod: 'App\Management\Controllers\UserController@register');
-$router->get(path: '/user/(\d+)', controllerMethod: 'App\Management\Controllers\UserController@findUserId');
 $router->get(path:'/user', controllerMethod:'App\Management\Controllers\UserController@displayUser');
+$router->get(path:'/update_user',controllerMethod:'App\Management\Controllers\UserController@showUserForm');
+$router->post(path:'/update_user', controllerMethod:'App\Management\Controllers\UserController@updateCurrentUser');
 
 //Auth :
 $router->get(path: '/login', controllerMethod: 'App\Management\Controllers\AuthController@showLoginForm');
