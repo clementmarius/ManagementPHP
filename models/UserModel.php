@@ -102,7 +102,7 @@ class UserModel
             return "Erreur SQL : " . $e->getMessage();
         }
     }
-    
+
     public function updateUser($id, $first_name, $last_name, $email, $date_of_birth)
     {
         try {
@@ -130,6 +130,21 @@ class UserModel
         } catch (PDOException $e) {
             error_log("Echec de la mise à jour des informations de l'utilisateur par ID : " . $e->getMessage());
             return "Erreur SQL : " . $e->getMessage();
+        }
+    }
+
+    public function getUserById($id)
+    {
+
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = :id ");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erreur lors de la recuperation de l'utilisateur par ID :" . $e->getMessage());
+            return null;
         }
     }
 }

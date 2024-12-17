@@ -122,12 +122,25 @@ class UserController
         }
 
         require_once __DIR__ . '/../views/update_user.php';
-
     }
 
-    public function showUserForm(){
-        if(session_status()=== PHP_SESSION_NONE){
+    public function showUserForm()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
             session_start();
+        }
+
+        if (!isset($_SESSION['user_data'])) {
+            $userId = $_SESSION['user_id'] ?? null;
+            if ($userId) {
+                $userModel = new UserModel();
+                $userData = $userModel->getUserById($userId);
+                if ($userData) {
+                    $_SESSION['user_data'] = $userData;
+                } else {
+                    error_log("Utilisateur non trouve pour l'ID : $userId");
+                }
+            }
         }
         require_once __DIR__ . '/../views/update_user.php';
     }
