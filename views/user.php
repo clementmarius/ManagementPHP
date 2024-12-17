@@ -75,6 +75,7 @@ $user_data = $_SESSION['user_data'] ?? null;
             <p>Aucune donnée utilisateur disponible.</p>
         <?php endif; ?>
         <button class="primary" onclick="location.href = 'update_user';" id="myButton" class="float-left submit-button">Update User</button>
+        <button class="primary" onclick="location.href = 'test_user';" id="myButton" class="float-left submit-button">Test User</button>
     </main>
     <!-- ./ Main -->
 

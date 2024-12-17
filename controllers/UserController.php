@@ -118,6 +118,10 @@ class UserController
             $_SESSION['display_error'] = $e->getMessage();
             error_log("Erreur dans Update User : " . $e->getMessage());
             header("Loaction: /update_user");
+            exit;
         }
+
+        require_once __DIR__ . '/../views/update_user.php';
+
     }
 }
