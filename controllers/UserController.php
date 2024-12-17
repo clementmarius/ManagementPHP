@@ -124,4 +124,11 @@ class UserController
         require_once __DIR__ . '/../views/update_user.php';
 
     }
+
+    public function showUserForm(){
+        if(session_status()=== PHP_SESSION_NONE){
+            session_start();
+        }
+        require_once __DIR__ . '/../views/update_user.php';
+    }
 }
