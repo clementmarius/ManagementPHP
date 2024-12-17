@@ -97,4 +97,27 @@ class UserController
 
         require_once __DIR__ . '/../views/user.php';
     }
+
+    public function updateCurrentUser()
+    {
+        try {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $id = htmlspecialchars($_POST['id'] ?? '');
+                $first_name = htmlspecialchars(trim($_POST['first_name'] ?? ''));
+                $last_name = htmlspecialchars(trim($_POST['last_name'] ?? ''));
+                $date_of_birth = htmlspecialchars(trim($_POST['date_of_birth'] ?? ''));
+                $email = htmlspecialchars(trim($_POST['email'] ?? ''));
+                $userModel = new UserModel();
+
+                $result = $userModel->updateUser($id, $first_name, $last_name, $email, $date_of_birth);
+            }
+        } catch (Exception $e) {
+            $_SESSION['display_error'] = $e->getMessage();
+            error_log("Erreur dans Update User : " . $e->getMessage());
+            header("Loaction: ");
+        }
+    }
 }
