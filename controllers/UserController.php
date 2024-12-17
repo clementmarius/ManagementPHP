@@ -117,7 +117,7 @@ class UserController
         } catch (Exception $e) {
             $_SESSION['display_error'] = $e->getMessage();
             error_log("Erreur dans Update User : " . $e->getMessage());
-            header("Loaction: ");
+            header("Loaction: /update_user");
         }
     }
 }
