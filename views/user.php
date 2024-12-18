@@ -6,6 +6,7 @@ use App\Management\Controllers\UserController;
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $controller = new UserController;
     $controller->displayUser();
+    $controller->deleteCurrentUser();
 }
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -75,6 +76,11 @@ $user_data = $_SESSION['user_data'] ?? null;
             <p>Aucune donnée utilisateur disponible.</p>
         <?php endif; ?>
         <button class="primary" onclick="location.href = 'update_user';" id="myButton" class="float-left submit-button">Update User</button>
+
+        <form action="/" method="POST">
+            <input type="hidden" name="deleteCurrentUser" value="1">
+            <input type="submit" value="Delete User" class="secondary" id="deleteButton" onclick="return confirm('Are you sure?')">
+        </form>
     </main>
     <!-- ./ Main -->
 
