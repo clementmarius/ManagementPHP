@@ -61,9 +61,11 @@ $user_data = $_SESSION['user_data'] ?? null;
 
         <!-- ./ Preview -->
         <section id="preview">
-            <form action="/user" method="POST">
+            <form action="/update_user" method="POST">
                 <h2>User's Informations : </h2>
                 <div>
+                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($user_data['id'] ?? ''); ?>">
+
                     <label for="name">First Name&nbsp;:</label>
                     <input type="text" id="name" name="first_name" placeholder="First Name" aria-label="First Name" value="<?php echo htmlspecialchars($user_data['first_name'] ?? ''); ?>" required>
 
