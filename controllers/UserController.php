@@ -164,4 +164,8 @@ class UserController
         }
         require_once __DIR__ . '/../views/update_user.php';
     }
+
+    public function deleteCurrentUser(){
+        
+    }
 }
