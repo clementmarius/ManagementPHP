@@ -165,7 +165,27 @@ class UserController
         require_once __DIR__ . '/../views/update_user.php';
     }
 
-    public function deleteCurrentUser(){
-        
+    public function deleteCurrentUser()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (!empty($_POST) && isset($_SESSION['user_id'])) {
+            $userModel = new UserModel();
+            $userId = $_SESSION['user_id'];
+
+            $result = $userModel->deleteUser($userId);
+
+            if ($result !== null) {
+                session_unset();
+                session_destroy();
+                header('Location: /home');
+                exit;
+            } else {
+                echo "Erreur lors de la suppresion de l'utilisateur";
+            }
+        } else {
+            echo "Utilisateur non connecte ou requete invalide";
+        }
     }
 }
