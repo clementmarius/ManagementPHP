@@ -137,11 +137,11 @@ class UserModel
     {
 
         try {
-            $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = :id ");
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-
-            return $stmt->fetch(PDO::FETCH_ASSOC);
+            $query = "SELECT id, first_name, last_name, email, date_of_birth FROM users WHERE id = :id";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            return $statement->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             error_log("Erreur lors de la recuperation de l'utilisateur par ID :" . $e->getMessage());
             return null;

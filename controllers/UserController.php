@@ -105,19 +105,42 @@ class UserController
                 session_start();
             }
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+                $id = $_SESSION['user_id'] ?? null;
+                if (empty($id)) {
+                    echo "<p style='color:red;'>Erreur : l'ID utilisateur est manquant. Veuillez vérifier votre formulaire.</p>";
+                    exit;
+                }
+
                 $id = htmlspecialchars($_POST['id'] ?? '');
                 $first_name = htmlspecialchars(trim($_POST['first_name'] ?? ''));
                 $last_name = htmlspecialchars(trim($_POST['last_name'] ?? ''));
                 $date_of_birth = htmlspecialchars(trim($_POST['date_of_birth'] ?? ''));
                 $email = htmlspecialchars(trim($_POST['email'] ?? ''));
-                $userModel = new UserModel();
 
+                $userModel = new UserModel();
                 $result = $userModel->updateUser($id, $first_name, $last_name, $email, $date_of_birth);
+
+                if ($result) {
+                    echo "<p> User updated avec son Id : $id</p>";
+
+                    $updatedUser = $userModel->getUserById($id);
+                    if ($updatedUser) {
+                        $_SESSION['user_data'] = $updatedUser;
+                    } else {
+                        echo "Impossible de mettre user id : $id";
+                    }
+
+                    header("Location: /update_user");
+                    exit;
+                } else {
+                    echo "<p>La mise à jour a échoué pour l'utilisateur ID : $id</p>";
+                }
             }
         } catch (Exception $e) {
             $_SESSION['display_error'] = $e->getMessage();
-            error_log("Erreur dans Update User : " . $e->getMessage());
-            header("Loaction: /update_user");
+            echo "<p> Erreur dans Update User : " . $e->getMessage() . "</p>";
+            header("Location: /update_user");
             exit;
         }
 
@@ -129,7 +152,7 @@ class UserController
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-
+        var_dump($_SESSION['user_data']);
         if (!isset($_SESSION['user_data'])) {
             $userId = $_SESSION['user_id'] ?? null;
             if ($userId) {
@@ -138,7 +161,8 @@ class UserController
                 if ($userData) {
                     $_SESSION['user_data'] = $userData;
                 } else {
-                    error_log("Utilisateur non trouve pour l'ID : $userId");
+                    echo "<p style='color:red;'>Erreur : Utilisateur introuvable.</p>";
+                    exit;
                 }
             }
         }
