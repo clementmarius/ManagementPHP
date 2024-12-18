@@ -107,10 +107,7 @@ class UserController
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $id = $_SESSION['user_id'] ?? null;
-                if (empty($id)) {
-                    echo "<p style='color:red;'>Erreur : l'ID utilisateur est manquant. Veuillez vérifier votre formulaire.</p>";
-                    exit;
-                }
+
 
                 $id = htmlspecialchars($_POST['id'] ?? '');
                 $first_name = htmlspecialchars(trim($_POST['first_name'] ?? ''));
@@ -152,7 +149,6 @@ class UserController
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        var_dump($_SESSION['user_data']);
         if (!isset($_SESSION['user_data'])) {
             $userId = $_SESSION['user_id'] ?? null;
             if ($userId) {
