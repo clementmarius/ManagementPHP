@@ -36,6 +36,7 @@ class UserModel
 
                 if (password_verify($password, $user['password'])) {
                     return [
+                        'id' => $user['id'],
                         'first_name' => $user['first_name'],
                         'last_name' => $user['last_name'],
                         'email' => $user['email'],
