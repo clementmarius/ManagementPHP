@@ -17,7 +17,7 @@ $router->get(path: '/register', controllerMethod: 'App\Management\Controllers\Us
 $router->post(path: '/register', controllerMethod: 'App\Management\Controllers\UserController@register');
 $router->get(path:'/user', controllerMethod:'App\Management\Controllers\UserController@displayUser');
 $router->get(path:'/update_user',controllerMethod:'App\Management\Controllers\UserController@showUserForm');
-$router->post(path:'/update_user', controllerMethod:'App\Management\Controllers\UserController@updateCurrentUser');
+$router->post(path:'/user', controllerMethod:'App\Management\Controllers\UserController@updateCurrentUser');
 $router->post(path:'/', controllerMethod:'App\Management\Controllers\UserController@deleteCurrentUser');
 
 //Auth :

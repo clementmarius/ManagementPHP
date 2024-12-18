@@ -61,7 +61,7 @@ $user_data = $_SESSION['user_data'] ?? null;
 
         <!-- ./ Preview -->
         <section id="preview">
-            <form action="/update_user" method="POST">
+            <form action="/user" method="POST">
                 <h2>User's Informations : </h2>
                 <div>
                     <input type="hidden" name="id" value="<?php echo htmlspecialchars($user_data['id'] ?? ''); ?>">
