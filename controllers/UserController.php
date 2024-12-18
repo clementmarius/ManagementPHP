@@ -179,7 +179,7 @@ class UserController
             if ($result !== null) {
                 session_unset();
                 session_destroy();
-                header('Location: /home');
+                header('Location: /');
                 exit;
             } else {
                 echo "Erreur lors de la suppresion de l'utilisateur";
