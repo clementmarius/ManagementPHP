@@ -36,6 +36,7 @@ class UserModel
 
                 if (password_verify($password, $user['password'])) {
                     return [
+                        'id' => $user['id'],
                         'first_name' => $user['first_name'],
                         'last_name' => $user['last_name'],
                         'email' => $user['email'],
@@ -102,7 +103,7 @@ class UserModel
             return "Erreur SQL : " . $e->getMessage();
         }
     }
-    
+
     public function updateUser($id, $first_name, $last_name, $email, $date_of_birth)
     {
         try {
@@ -130,6 +131,21 @@ class UserModel
         } catch (PDOException $e) {
             error_log("Echec de la mise à jour des informations de l'utilisateur par ID : " . $e->getMessage());
             return "Erreur SQL : " . $e->getMessage();
+        }
+    }
+
+    public function getUserById($id)
+    {
+
+        try {
+            $query = "SELECT id, first_name, last_name, email, date_of_birth FROM users WHERE id = :id";
+            $statement = $this->pdo->prepare($query);
+            $statement->bindValue(':id', $id, PDO::PARAM_INT);
+            $statement->execute();
+            return $statement->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erreur lors de la recuperation de l'utilisateur par ID :" . $e->getMessage());
+            return null;
         }
     }
 }

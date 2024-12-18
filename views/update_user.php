@@ -6,6 +6,7 @@ use App\Management\Controllers\UserController;
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $controller = new UserController;
     $controller->updateCurrentUser();
+    $controller->showUserForm();
 }
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -60,20 +61,22 @@ $user_data = $_SESSION['user_data'] ?? null;
 
         <!-- ./ Preview -->
         <section id="preview">
-            <form action="/user" method="POST">
+            <form action="/update_user" method="POST">
                 <h2>User's Informations : </h2>
                 <div>
+                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($user_data['id'] ?? ''); ?>">
+
                     <label for="name">First Name&nbsp;:</label>
-                    <input type="text" id="name" name="first_name" placeholder="First Name" aria-label="First Name" value="<?php echo htmlspecialchars($_POST['first_name'] ?? ''); ?>" required>
+                    <input type="text" id="name" name="first_name" placeholder="First Name" aria-label="First Name" value="<?php echo htmlspecialchars($user_data['first_name'] ?? ''); ?>" required>
 
                     <label for="lastName">Last Name&nbsp;:</label>
-                    <input type="text" id="lastName" name="last_name" placeholder="Last Name" aria-label="Last Name" value="<?php echo htmlspecialchars($_POST['last_name'] ?? ''); ?>" required>
+                    <input type="text" id="lastName" name="last_name" placeholder="Last Name" aria-label="Last Name" value="<?php echo htmlspecialchars($user_data['last_name'] ?? ''); ?>" required>
 
                     <label for="start">Birthday&nbsp;:</label>
-                    <input type="date" id="start" name="date_of_birth" aria-label="Date of Birth" value="<?php echo htmlspecialchars($_POST['date_of_birth'] ?? ''); ?>" required>
+                    <input type="date" id="start" name="date_of_birth" aria-label="Date of Birth" value="<?php echo htmlspecialchars($user_data['date_of_birth'] ?? ''); ?>" required>
 
                     <label for="email">Email&nbsp;:</label>
-                    <input type="email" id="email" name="email" placeholder="Email" aria-label="Email" value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>" required>
+                    <input type="email" id="email" name="email" placeholder="Email" aria-label="Email" value="<?php echo htmlspecialchars($user_data['email'] ?? ''); ?>" required>
 
                     <input type="hidden" name="csrf_token" value="">
                     <input type="submit" value="Update">
