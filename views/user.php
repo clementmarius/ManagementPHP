@@ -79,8 +79,11 @@ $user_data = $_SESSION['user_data'] ?? null;
 
         <form action="/" method="POST">
             <input type="hidden" name="deleteCurrentUser" value="1">
-            <input type="submit" value="Delete User" class="secondary" id="deleteButton" onclick="return confirm('Are you sure?')">
+            <button class="primary" id="deleteButton">
+                <input type="submit" value="Delete User" onclick="return confirm('Are you sure?')">
+            </button>
         </form>
+
     </main>
     <!-- ./ Main -->
 
