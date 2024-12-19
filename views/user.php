@@ -76,6 +76,7 @@ $user_data = $_SESSION['user_data'] ?? null;
             <p>Aucune donnée utilisateur disponible.</p>
         <?php endif; ?>
         <button class="primary" onclick="location.href = 'update_user';" id="myButton" class="float-left submit-button">Update User</button>
+        <button class="secondary" onclick="location.href = 'view_posts';" id="myButton" class="float-left submit-button">Home</button>
 
         <form action="/" method="POST">
             <input type="hidden" name="deleteCurrentUser" value="1">

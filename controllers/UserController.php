@@ -128,7 +128,7 @@ class UserController
                         echo "Impossible de mettre user id : $id";
                     }
 
-                    header("Location: /update_user");
+                    header("Location: /user");
                     exit;
                 } else {
                     echo "<p>La mise à jour a échoué pour l'utilisateur ID : $id</p>";
